@@ -1,0 +1,11 @@
+# Local files — never commit secrets or editor state
+.env
+.env.*
+*.pem
+*.key
+node_modules/
+__pycache__/
+.pytest_cache/
+.DS_Store
+Thumbs.db
+.vscode/
