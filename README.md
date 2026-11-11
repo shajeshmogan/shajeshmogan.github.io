@@ -10,8 +10,8 @@ I study Applied AI & Analytics at Singapore Polytechnic. This portfolio covers m
 - **Deep Learning** covers handwriting classification with a convolutional neural network and sentiment classification with SimpleRNN, LSTM, and GRU architectures.
 - **[Image Generation and Reinforcement Learning](https://github.com/shajeshmogan/deep-learning-ca2)** covers CIFAR-10 image generation, DQN control of Gymnasium Pendulum, and a matched comparison with Double DQN.
 
-The interactive site walkthroughs use illustrative data and diagrams. They run locally in the browser without live inference or calendar access.
+The site demos use sample data and run in the browser without live inference or calendar access.
 
 ## Site stack
 
-HTML, CSS, and vanilla JavaScript, with Canvas 2D and SVG for interactive visuals. Hosted on GitHub Pages.
+HTML, CSS, and vanilla JavaScript, with Canvas 2D and SVG for the neural globe and project diagrams. Hosted on GitHub Pages.
