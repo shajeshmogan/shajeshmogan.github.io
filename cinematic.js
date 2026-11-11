@@ -87,7 +87,7 @@
     const width=rect.width, height=rect.height;
     if(width<1||height<1)return;
     const cx=width/2,cy=height/2;
-    const rx=Math.min(width*.34,250),ry=Math.min(height*.31,175);
+    const rx=Math.min(width*.34,250),ry=Math.min(height*.38,175);
     svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
     let line='';
     for(const item of coordinates){
@@ -164,8 +164,9 @@
       if(room.dataset.room==='B402'){room.classList.add('is-valid');setText(strong,'VALID OPTION');}
       if(room.dataset.room==='B305'){room.classList.add('is-rejected');setText(strong,'TIME CLASH');}
     }
-    if(runBtn)runBtn.disabled=true;
-    if(approveBtn)approveBtn.disabled=false;
+    if (approveBtn) approveBtn.disabled = false;
+    if (doc.activeElement === runBtn) approveBtn?.focus();
+    if (runBtn) runBtn.disabled = true;
   });
   approveBtn?.addEventListener('click',()=>{
     if(approveBtn.disabled)return;
@@ -173,6 +174,7 @@
     setText(outputText,'The fictional proposal for B402 is approved. This illustrates the approval gate; no real booking, calendar event or external system has been changed.');
     const selected=rooms.find(room=>room.dataset.room==='B402');
     selected?.classList.add('is-approved');setText(selected?.querySelector('strong'),'DEMO APPROVED');
+    if (doc.activeElement === approveBtn) resetBtn?.focus();
     approveBtn.disabled=true;
   });
   resetBtn?.addEventListener('click',resetSimulation);

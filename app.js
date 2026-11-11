@@ -169,7 +169,12 @@
     dialog.querySelectorAll('[data-close-dialog]').forEach((button) => {
       button.addEventListener('click', () => dialog.close());
     });
-    dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+    let startedOnBackdrop = false;
+    dialog.addEventListener('pointerdown', (event) => { startedOnBackdrop = event.target === dialog; });
+    dialog.addEventListener('click', (event) => {
+      if (startedOnBackdrop && event.target === dialog) dialog.close();
+      startedOnBackdrop = false;
+    });
   });
 
   const recoverySteps = [
@@ -197,7 +202,7 @@
   const modelModes = {
     vision: {
       steps: ['IMAGE', 'CONVOLUTION', 'FEATURES', 'CLASS'],
-      description: 'A CNN learns image features to support handwriting classification. Results and model metrics will be added only when checked against project evidence.'
+      description: 'A CNN learns image features to support handwriting classification. This diagram shows the steps in the classification pipeline.'
     },
     language: {
       steps: ['TEXT', 'SEQUENCE', 'RNN / LSTM / GRU', 'SENTIMENT'],
