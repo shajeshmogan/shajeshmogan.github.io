@@ -9,6 +9,7 @@ I study Applied AI & Analytics at Singapore Polytechnic. This portfolio covers m
 - **RippleFix** is an AI-GNITION 2026 team project that explores how to recover from room booking disruptions. It evaluates alternatives against scheduling and capacity constraints, explains its recommendations, and requires human approval before changes.
 - **[Handwriting and Sentiment Classification](https://github.com/shajeshmogan/handwriting-and-sentiment-classification)** compares CNNs on EMNIST letters and recurrent models on English and Malay pizza reviews.
 - **[Image Generation and Reinforcement Learning](https://github.com/shajeshmogan/image-generation-and-reinforcement-learning)** covers CIFAR-10 image generation, DQN control of Gymnasium Pendulum, and a matched comparison with Double DQN.
+- **Green Grass Library Data Warehouse** is a team project that used MySQL to analyse completed loans. I cleaned and validated the source data before it was loaded into the warehouse.
 
 The site demos use sample data and run in the browser without live inference or calendar access.
 
