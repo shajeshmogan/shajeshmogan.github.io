@@ -10,12 +10,14 @@
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./refinement.css" />
+  <link rel="stylesheet" href="./cinematic-v4.css" />
   <script src="./app.js" defer></script>
   <script src="./cinematic.js" defer></script>
-  <script src="./immersive.js" defer></script>
+  <script src="./cinematic-v4.js" defer></script>
   <title>NewWorld | Shajesh Mogan</title>
 </head>
 <body id="top" tabindex="-1">
+  <div id="v4-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -53,7 +55,8 @@
         <div class="hero-visual">
           <div class="globe-stage">
             <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
-            <canvas id="neural-canvas" width="640" height="640" aria-hidden="true"></canvas>
+            <canvas id="neural-canvas" width="640" height="640" tabindex="0" role="group" aria-label="Animated neural globe. Drag horizontally or press the arrow keys to rotate it."></canvas>
+            <span class="v4-globe-caption" aria-hidden="true">DRAG TO ROTATE</span>
             <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
           </div>
 
@@ -74,6 +77,14 @@
           <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Build and compare.</h3><p>I start with a baseline, then test alternatives against it.</p></article>
           <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Validate and improve.</h3><p>I examine failures, make targeted changes, and check whether they improve the result.</p></article>
         </div>
+      </div>
+    </section>
+
+    <section class="v4-interlude" aria-label="Approach to building technology">
+      <div class="v4-interlude-inner">
+        <span class="v4-interlude-overline">FROM AN IDEA TO THE EVIDENCE</span>
+        <h2 class="v4-interlude-title"><span>BUILD.</span><span>QUESTION.</span><span>IMPROVE.</span></h2>
+        <p class="v4-interlude-aside">The projects below show what I built, how I tested it, and what I learned from the results.</p>
       </div>
     </section>
 
