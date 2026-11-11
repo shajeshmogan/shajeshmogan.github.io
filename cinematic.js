@@ -72,72 +72,7 @@
     if (!motion()) reveals.forEach(item=>item.classList.add('cinematic-visible'));
   });
 
-  // Accessible interactive constellation. Nodes stay legible while the
-  // constellation's depth and connections rotate; keyboard buttons also work.
-  const skillMap = $('.skill-map');
-  const buttons = skillMap ? $$('.skill-node') : [];
-  const svg = skillMap?.querySelector('.skill-connections');
-  const paths = svg?.querySelector('path');
-  const core = skillMap?.querySelector('.map-core');
-  const coordinates = buttons.map((btn,index)=>({button:btn,angle:index*Math.PI/3-Math.PI*2/3}));
-  let yaw=0, drag=null;
-  function drawConstellation(){
-    if(!skillMap||!svg||!paths||!core)return;
-    const rect=skillMap.getBoundingClientRect();
-    const width=rect.width, height=rect.height;
-    if(width<1||height<1)return;
-    const cx=width/2,cy=height/2;
-    const rx=Math.min(width*.34,250),ry=Math.min(height*.38,175);
-    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
-    let line='';
-    for(const item of coordinates){
-      const a=item.angle+yaw;
-      const x=cx+Math.cos(a)*rx;
-      const depth=Math.sin(a);
-      const y=cy+Math.sin(a)*ry*.9 - depth*14;
-      const scale=clamp(.91+depth*.12,.78,1.08);
-      item.button.style.left=`${(x/width*100).toFixed(3)}%`;
-      item.button.style.top=`${(y/height*100).toFixed(3)}%`;
-      item.button.style.right='auto';item.button.style.bottom='auto';
-      item.button.style.transform=`translate(-50%,-50%) scale(${scale.toFixed(3)})`;
-      item.button.style.zIndex=String(3+Math.round((depth+1)*2));
-      item.button.style.opacity=String(clamp(.79+depth*.17,.62,1));
-      const qx=(x+cx)/2, qy=(y+cy)/2-21;
-      line+=`M ${cx} ${cy} Q ${qx} ${qy} ${x} ${y} `;
-    }
-    paths.setAttribute('d',line);
-    const orbit=skillMap.querySelector('.map-orbit');
-    if(orbit)orbit.style.transform=`translate(-50%,-50%) rotate(${(yaw*57.2958).toFixed(1)}deg)`;
-  }
-  const rotate = (delta)=>{yaw+=delta;drawConstellation();};
-  $('#skill-rotate-left')?.addEventListener('click',()=>rotate(-Math.PI/7));
-  $('#skill-rotate-right')?.addEventListener('click',()=>rotate(Math.PI/7));
-  $('#skill-reset-view')?.addEventListener('click',()=>{yaw=0;drawConstellation();});
-  if(skillMap){
-    skillMap.addEventListener('pointerdown',event=>{
-      if(drag||event.target.closest('button')||event.button!==0)return;
-      drag={id:event.pointerId,x:event.clientX,yaw};skillMap.setPointerCapture(event.pointerId);
-      skillMap.classList.add('is-dragging');
-    });
-    skillMap.addEventListener('pointermove',event=>{
-      if(drag?.id!==event.pointerId)return;
-      yaw=drag.yaw+(event.clientX-drag.x)*.0055;
-      drawConstellation();
-    });
-    function stopDrag(event) {
-      if (drag?.id !== event.pointerId) return;
-      drag = null;
-      skillMap.classList.remove('is-dragging');
-    }
-    skillMap.addEventListener('pointerup',stopDrag);
-    skillMap.addEventListener('pointercancel',stopDrag);
-    skillMap.addEventListener('lostpointercapture',stopDrag);
-    const ro=typeof ResizeObserver !== 'undefined'?new ResizeObserver(drawConstellation):null;
-    ro?.observe(skillMap);if(!ro)window.addEventListener('resize',drawConstellation,{passive:true});
-    drawConstellation();
-  }
-  // The skill network is drawn on load, resize, drag and button clicks only.
-  // No perpetual animation loop competes with scroll or the neural canvas.
+  // The skills list is static; its buttons update the detailed descriptions.
 
   // RippleFix: local state machine with illustrative data only. A proposed
   // option is never a real calendar operation or agent action.
@@ -158,7 +93,7 @@
   }
   runBtn?.addEventListener('click',()=>{
     setText(status,'AWAITING APPROVAL');setText(outputLabel,'PROPOSAL PREPARED / NOT APPLIED');
-    setText(outputText,'Example: B401 is unavailable. B402 passes the illustrative capacity and conflict checks. B305 is excluded because the example timetable contains a clash. Review before approval.');
+    setText(outputText,'In this fictional example, B401 is unavailable. B402 passes the capacity and timetable checks; B305 conflicts with another booking. Review the proposal before approving it.');
     for(const room of rooms){
       const strong=room.querySelector('strong');
       if(room.dataset.room==='B402'){room.classList.add('is-valid');setText(strong,'VALID OPTION');}
@@ -171,7 +106,7 @@
   approveBtn?.addEventListener('click',()=>{
     if(approveBtn.disabled)return;
     setText(status,'SIMULATION COMPLETE');setText(outputLabel,'APPROVED / DEMO ONLY');
-    setText(outputText,'The fictional proposal for B402 is approved. This illustrates the approval gate; no real booking, calendar event or external system has been changed.');
+    setText(outputText,'You approved the fictional B402 proposal. This demonstrates the review step; no real booking, calendar event, or external service was changed.');
     const selected=rooms.find(room=>room.dataset.room==='B402');
     selected?.classList.add('is-approved');setText(selected?.querySelector('strong'),'DEMO APPROVED');
     if (doc.activeElement === approveBtn) resetBtn?.focus();

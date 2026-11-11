@@ -1,0 +1,274 @@
+/* NewWorld — editorial refinement
+   A single visual language: ink, mineral blue, warm white, generous spacing.
+   Visual motion supports reading; the globe is ambient, not navigation. */
+:root {
+  --nw-ink: #060b12;
+  --nw-surface: #0c1620;
+  --nw-surface-raised: #111f2c;
+  --nw-line: rgba(181, 214, 231, .17);
+  --nw-text: #eef3f5;
+  --nw-muted: #acbcc8;
+  --nw-accent: #a5dff2;
+  --nw-ease: cubic-bezier(.22, 1, .36, 1);
+}
+html { scroll-padding-top: 90px; }
+body { background: var(--nw-ink); color: var(--nw-text); }
+body, button, input, a { -webkit-tap-highlight-color: transparent; }
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--nw-accent) !important;
+  outline-offset: 4px;
+}
+::selection { background: #9cdcf0; color: #07131b; }
+
+/* Reduce the number of independent navigation and HUD layers. */
+.scene-track, .hero-visual-hint, .orb-chip { display: none !important; }
+.site-header {
+  background: rgba(6, 12, 20, .79) !important;
+  border-bottom: 1px solid var(--nw-line);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 60;
+}
+.nav-links { gap: clamp(18px, 2.4vw, 38px); }
+.nav-links a { font-weight: 600; letter-spacing: .095em; }
+.nav-links a:hover, .footer a:hover { color: var(--nw-accent); }
+.outline-action, .primary-button, .contact-secondary, .text-link {
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .45s var(--nw-ease);
+}
+.primary-button:hover, .outline-action:hover { transform: translateY(-2px); }
+
+/* Hero — a meaningful centerpiece, integrated into the atmosphere. */
+.hero {
+  background: radial-gradient(ellipse 56% 70% at 82% 47%, rgba(30, 83, 113, .22), transparent 72%),
+              linear-gradient(180deg, #060b12 0%, #09131d 80%, #080f16 100%) !important;
+  isolation: isolate;
+  min-height: min(860px, 100svh);
+}
+.hero-grid { opacity: .18 !important; background-size: 100px 100px !important; }
+.hero-gradient { background: linear-gradient(90deg, rgba(6,11,18,.3), transparent 74%) !important; }
+.hero-content { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr) !important; column-gap: 0; }
+.hero-copy { padding-top: 0; transform: translate3d(0, var(--hero-copy-shift, 0px), 0); }
+.hero-title {
+  max-width: 750px !important;
+  font-size: clamp(64px, 7.5vw, 122px) !important;
+  line-height: .95 !important;
+  letter-spacing: -.084em !important;
+  margin-bottom: 30px;
+  color: #f1f4f7;
+}
+.hero-title em { color: #b8dfea !important; text-shadow: none !important; }
+.hero .eyebrow { color: var(--nw-accent); letter-spacing: .14em; }
+.hero-description { color: var(--nw-muted) !important; font-size: clamp(15px, 1.13vw, 17px) !important; line-height: 1.8; max-width: 490px !important; }
+.hero-buttons { margin-top: 34px; }
+.hero-meta { margin-top: 54px; color: #8ba6b4; }
+.hero-bottom { border-color: var(--nw-line) !important; }
+.hero-scroll { letter-spacing: .14em; }
+
+.hero-visual {
+  display: grid !important;
+  grid-template-columns: 1fr;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+  justify-items: center;
+  align-items: center;
+  overflow: visible;
+  filter: none !important;
+  transform: translate3d(0,0,0) !important;
+}
+.globe-stage {
+  width: min(115%, 610px) !important;
+  max-width: none;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  transform: translate3d(0, var(--globe-y, 0px), 0) scale(var(--globe-zoom, 1));
+  opacity: var(--globe-opacity, 1);
+  transition: transform .2s linear, opacity .2s linear;
+  mask-image: radial-gradient(circle, #000 0 51%, rgba(0,0,0,.88) 66%, transparent 86%);
+  -webkit-mask-image: radial-gradient(circle, #000 0 51%, rgba(0,0,0,.88) 66%, transparent 86%);
+}
+.globe-stage::before {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(64,144,189,.10), rgba(20,59,91,.03) 50%, transparent 73%);
+  pointer-events: none;
+}
+.globe-stage::after { content: none !important; }
+.globe-stage #neural-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: default !important;
+  touch-action: auto !important;
+  pointer-events: none !important;
+}
+.orb-halo { opacity: .6; }
+.orb-axis { opacity: .32; animation: none !important; }
+
+/* Section rhythm: one coherent scroll, not a sequence of unrelated widgets. */
+.section-pad { padding-top: clamp(96px, 11vw, 160px) !important; padding-bottom: clamp(96px, 11vw, 160px) !important; }
+.about-section, .work-section, .skills-section, .journey-section {
+  background: linear-gradient(180deg, #080f16, #0a131c) !important;
+  border-top: 1px solid var(--nw-line);
+}
+.about-section { background: #080f16 !important; }
+.work-section { background: #0a131c !important; }
+.skills-section { background: #08111a !important; }
+.journey-section { background: #0b151e !important; }
+.section-kicker, .micro-label { color: #9fc9d7; }
+.section-heading-row { margin-bottom: clamp(36px, 5vw, 64px); }
+.section-heading-row p { color: var(--nw-muted); max-width: 420px; line-height: 1.75; }
+.about-statement h2, .section-heading-row h2, .journey-intro h2, .contact-content h2 {
+  letter-spacing: -.058em !important;
+}
+.about-story .story-lead { color: #e5eef1; line-height: 1.65; }
+.about-story p { color: var(--nw-muted); line-height: 1.85; }
+.principle { transition: background .35s ease, border-color .35s ease; }
+.principle:hover { background: rgba(135, 198, 219, .035); border-color: rgba(158, 209, 226, .25); }
+.principle p { color: var(--nw-muted); }
+
+/* Case-study cards act as destinations. Subtle depth, no cursor-driven tilt. */
+.project-grid { gap: clamp(18px, 2.1vw, 30px) !important; }
+.project-card {
+  background: #0e1924 !important;
+  border: 1px solid var(--nw-line) !important;
+  border-radius: 18px !important;
+  overflow: hidden;
+  transform: none !important;
+  box-shadow: 0 0 0 transparent;
+  transition: border-color .4s ease, box-shadow .5s var(--nw-ease) !important;
+}
+.project-card:hover, .project-card:focus-within { border-color: rgba(168, 222, 240, .52) !important; box-shadow: 0 28px 74px rgba(0,0,0,.23) !important; }
+.project-illustration { overflow: hidden; }
+.project-illustration > * { transition: transform .8s var(--nw-ease); }
+.project-card:hover .project-illustration > * { transform: scale(1.025); }
+.project-upper { border-bottom-color: var(--nw-line); }
+.project-type, .project-id, .project-info .micro-label { letter-spacing: .11em; }
+.project-info p { color: var(--nw-muted) !important; line-height: 1.8; }
+.project-card h3 { letter-spacing: -.045em; }
+.project-text-action, .case-profile-link { transition: background .3s ease, color .3s ease; }
+.project-text-action:hover, .case-profile-link:hover { background: rgba(142,208,230,.09); }
+.work-closer { border-top-color: var(--nw-line); }
+
+/* A static, accessible skills index is easier to use than a second globe. */
+.skills-workbench {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr) !important;
+  min-height: 0 !important;
+  background: #0d1a25 !important;
+  border: 1px solid var(--nw-line) !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.skill-map.skill-grid {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 12px;
+  padding: clamp(24px, 3.2vw, 44px);
+  min-height: 0 !important;
+  border-right: 1px solid var(--nw-line);
+  background: #0b1620 !important;
+  touch-action: auto !important;
+  overflow: visible !important;
+  align-content: center;
+}
+.skill-map .skill-node {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important; top: auto !important; right: auto !important; bottom: auto !important;
+  width: 100% !important;
+  min-width: 0;
+  min-height: 99px !important;
+  height: auto;
+  padding: 22px 18px !important;
+  border: 1px solid rgba(150, 198, 220, .21) !important;
+  border-radius: 10px !important;
+  background: #111f2b !important;
+  box-shadow: none !important;
+  color: #d7e4e9;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: .06em;
+  cursor: pointer;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: background .24s ease, border-color .24s ease, color .24s ease !important;
+}
+.skill-map .skill-node:hover, .skill-map .skill-node:focus-visible, .skill-map .skill-node.is-selected {
+  background: #1b3141 !important;
+  border-color: rgba(171, 231, 250, .73) !important;
+  color: #f1f9fc;
+}
+.skill-map .node-number { color: #9ac9dd; font-size: 10px; margin-top: 1px; }
+.skill-details { padding: clamp(27px, 3.5vw, 50px) !important; justify-content: center; }
+.skill-details h3 { color: #f1f7fa; }
+.skill-details p { color: var(--nw-muted) !important; }
+.skill-details #skill-description { min-height: 0 !important; }
+.skills-note { color: #9eb0be; }
+
+/* Timeline and interactive case studies stay clear and grounded. */
+.timeline { border-color: var(--nw-line); }
+.timeline-item p { color: var(--nw-muted); }
+.case-dialog { border-radius: 18px !important; border: 1px solid rgba(167,218,235,.3) !important; }
+.case-dialog::backdrop { background: rgba(3,7,12,.84); backdrop-filter: blur(11px); }
+.case-dialog .case-shell { background: #0b1823 !important; }
+.contact-section { background: radial-gradient(ellipse at 78% 48%, rgba(37,91,120,.16), transparent 58%), #07121a !important; }
+.footer { border-top: 1px solid var(--nw-line); }
+
+/* Restrained reveal / zoom: the layout never depends on animation to be readable. */
+@media (min-width: 851px) {
+  .motion-ready [data-cinematic]:not(.cinematic-visible) { opacity: 0; transform: translate3d(0, 22px, 0) scale(.988) !important; }
+  .motion-ready [data-cinematic].cinematic-visible { opacity: 1; transform: translate3d(0,0,0) scale(1) !important; }
+  .motion-ready .project-card[data-cinematic].cinematic-visible { transform: none !important; }
+}
+@media (max-width: 1100px) {
+  .hero-title { font-size: clamp(55px, 7vw, 88px) !important; }
+  .globe-stage { width: min(112%, 510px) !important; }
+}
+@media (max-width: 850px) {
+  .hero { min-height: 0 !important; height: auto !important; }
+  .hero-content { display: flex !important; flex-direction: column; padding-top: 105px; padding-bottom: 15px; align-items: stretch; }
+  .hero-copy { width: 100%; }
+  .hero-title { font-size: clamp(62px, 10.3vw, 96px) !important; }
+  .hero-visual { height: clamp(310px, 65vw, 490px) !important; margin-top: 16px !important; overflow: hidden; }
+  .globe-stage { width: min(104%, 490px) !important; }
+  .skills-workbench { grid-template-columns: 1fr !important; }
+  .skill-map.skill-grid { border-right: 0; border-bottom: 1px solid var(--nw-line); }
+  .skill-details { min-height: 250px; }
+  .section-pad { padding-top: 93px !important; padding-bottom: 93px !important; }
+}
+@media (max-width: 560px) {
+  .hero-content { padding-top: 102px !important; }
+  .hero-title { font-size: clamp(45px, 11vw, 66px) !important; }
+  .hero-description { font-size: 14px !important; line-height: 1.75; }
+  .hero-meta { margin-top: 32px !important; }
+  .hero-buttons { flex-wrap: wrap; gap: 20px; }
+  .hero-visual { height: 340px !important; margin-top: 4px !important; }
+  .globe-stage { width: min(100%, 380px) !important; }
+  .skill-map.skill-grid { grid-template-columns: 1fr 1fr; padding: 17px; gap: 9px; }
+  .skill-map .skill-node { min-height: 89px !important; padding: 16px 12px !important; gap: 8px; font-size: 9px; }
+  .skill-map .node-number { font-size: 9px; }
+  .skill-details { padding: 28px !important; }
+  .project-card { border-radius: 13px !important; }
+  .section-pad { padding-top: 76px !important; padding-bottom: 76px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy, .globe-stage, .project-illustration > *, .motion-ready [data-cinematic] {
+    transform: none !important; opacity: 1 !important; transition: none !important;
+  }
+  .project-card:hover .project-illustration > * { transform: none !important; }
+}
+body.no-motion .hero-copy, body.no-motion .globe-stage, body.no-motion .project-illustration > * {
+  transform: none !important; opacity: 1 !important; transition: none !important;
+}
