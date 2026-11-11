@@ -53,7 +53,7 @@
   function queueScroll(){if (!scrollQueued){scrollQueued=true;requestAnimationFrame(updateScrollScene);}}
   window.addEventListener('scroll',queueScroll,{passive:true});
   window.addEventListener('resize',queueScroll,{passive:true});
-  window.addEventListener('neurospace:motion',queueScroll);
+  window.addEventListener('newworld:motion',queueScroll);
   updateScrollScene();
 
   const reveals = $$('.about-statement,.about-story,.principle,.section-heading-row,.project-card,.skills-workbench,.journey-intro,.timeline-item,.contact-content');
@@ -68,7 +68,7 @@
     root.classList.add('motion-ready');
   } else reveals.forEach(item=>item.classList.add('cinematic-visible'));
   // Turning motion off must immediately reveal all content.
-  window.addEventListener('neurospace:motion',()=>{
+  window.addEventListener('newworld:motion',()=>{
     if (!motion()) reveals.forEach(item=>item.classList.add('cinematic-visible'));
   });
 

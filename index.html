@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <script src="./app.js" defer></script>
   <script src="./cinematic.js" defer></script>
-  <title>Shajesh Mogan | AI & Machine Learning Portfolio</title>
+  <title>NewWorld | Shajesh Mogan</title>
 </head>
 <body id="top" tabindex="-1">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -27,7 +27,7 @@
   <header class="site-header">
     <a href="#top" class="brand" aria-label="Shajesh Mogan, go to homepage">
       <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span>NEURO<span class="brand-light">SPACE</span></span>
+      <span>New<span class="brand-light">World</span></span>
       <span class="brand-person">/ SM.</span>
     </a>
     <nav class="nav-links" aria-label="Main navigation">
@@ -57,11 +57,19 @@
           <div class="hero-meta intro-item"><span class="meta-line"></span><span>MODELS</span><span class="meta-separator">/</span><span>AGENTS</span><span class="meta-separator">/</span><span>SOFTWARE</span></div>
         </div>
         <div class="hero-visual">
-          <span class="hero-visual-hint" aria-hidden="true">DRAG TO ROTATE</span>
           <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
-          <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Neural globe. Use the arrow keys to rotate."></canvas>
+          <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Project globe. Use Left or Right to browse projects."></canvas>
           <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
-          <div class="orb-chip orb-chip-top" aria-hidden="true"><span class="tiny-square"></span> NEURAL NETWORK</div>
+          <div class="globe-projects" role="group" aria-label="Browse projects">
+            <button type="button" id="globe-prev" aria-label="Previous project" hidden>&larr;</button>
+            <div class="globe-selection">
+              <span class="micro-label" id="globe-count">PROJECT 1 OF 3</span>
+              <a id="globe-project" href="#project-ripplefix" aria-describedby="globe-count">RippleFix</a>
+            </div>
+            <button type="button" id="globe-next" aria-label="Next project" hidden>&rarr;</button>
+            <p id="globe-help" hidden>Drag left or right to browse.</p>
+            <span class="sr-only" id="globe-announcement" role="status"></span>
+          </div>
         </div>
       </div>
       <div class="hero-bottom container"><div class="hero-scroll"><span class="scroll-tick" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div><div class="hero-count"><span>SHAJESH MOGAN</span> <span class="count-line"></span><span>PORTFOLIO</span></div></div>
@@ -87,7 +95,7 @@
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 02 / 05 ]</span></div></div>
         <div class="section-heading-row reveal"><h2 id="work-heading">MY <em>PROJECTS.</em></h2><p>Room recovery, handwriting and sentiment classification, image generation, and reinforcement learning.</p></div>
         <div class="project-grid">
-          <article class="project-card project-ripple reveal tilt-card">
+          <article id="project-ripplefix" tabindex="-1" class="project-card project-ripple reveal tilt-card">
             <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 001</span></span><span class="project-type">AI WORKFLOWS</span></div>
             <div class="project-illustration ripple-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">ROOM RECOVERY / WORKFLOW</div>
               <div class="ripple-art-label">CONSTRAINTS → RECOMMENDATION → APPROVAL</div>
@@ -105,7 +113,7 @@
             <div class="project-info"><div class="project-info-main"><span class="micro-label">AI-GNITION 2026 / TEAM PROJECT</span><h3>RippleFix<span class="name-accent">.</span></h3><p>RippleFix finds available rooms when a booking is disrupted, explains its recommendation, and asks for approval before updating the calendar.</p><div class="project-chips"><span>AI Agents</span><span>Decision Logic</span><span>Google Calendar API</span></div></div><button class="project-open" type="button" data-open-dialog="case-ripplefix" aria-label="Explore RippleFix case study"><span aria-hidden="true">↗</span></button></div>
             <button class="project-text-action" type="button" data-open-dialog="case-ripplefix">READ CASE STUDY <span aria-hidden="true">↗</span></button>
           </article>
-          <article class="project-card project-deep reveal tilt-card">
+          <article id="project-classification" tabindex="-1" class="project-card project-deep reveal tilt-card">
             <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 002</span></span><span class="project-type">DEEP LEARNING</span></div>
             <div class="project-illustration deep-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">MODEL ARCHITECTURES</div>
               <div class="deep-art-label">IMAGE AND LANGUAGE CLASSIFICATION</div>
@@ -115,7 +123,7 @@
             <div class="project-info"><div class="project-info-main"><span class="micro-label">COMPUTER VISION / LANGUAGE MODELS</span><h3>Handwriting and Sentiment Classification<span class="name-accent">.</span></h3><p>I compared CNNs on EMNIST letters and recurrent networks on English and Malay pizza reviews. The selected models reached 95.34% and 86.44% test accuracy, respectively.</p><div class="project-chips"><span>CNN</span><span>RNN / LSTM / GRU</span><span>Model Evaluation</span></div></div><button class="project-open" type="button" data-open-dialog="case-deep" aria-label="Explore Deep Learning case study"><span aria-hidden="true">↗</span></button></div>
             <button class="project-text-action" type="button" data-open-dialog="case-deep">READ CASE STUDY <span aria-hidden="true">↗</span></button>
           </article>
-          <article class="project-card project-ca2 reveal">
+          <article id="project-generation" tabindex="-1" class="project-card project-ca2 reveal">
             <div class="project-info">
               <div class="project-info-main">
                 <span class="micro-label">SINGAPORE POLYTECHNIC / COURSEWORK</span>
@@ -168,9 +176,9 @@
       </div>
     </section>
 
-    <section id="contact" tabindex="-1" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NEUROSPACE / SHAJESH MOGAN</span></div></div></section>
+    <section id="contact" tabindex="-1" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NewWorld / SHAJESH MOGAN</span></div></div></section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><div class="footer-brand">NEURO<span>SPACE</span></div><span>SHAJESH MOGAN / AI &amp; ML PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a><span>© <span id="year"></span></span></div></footer>
+  <footer class="footer"><div class="container footer-inner"><div class="footer-brand">New<span>World</span></div><span>SHAJESH MOGAN / AI &amp; ML PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a><span>© <span id="year"></span></span></div></footer>
 
   <dialog id="case-ripplefix" class="case-dialog" aria-labelledby="ripple-title">
     <div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 001</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close RippleFix case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">AI WORKFLOWS / AI-GNITION 2026</span><h2 id="ripple-title">RippleFix<span class="period">.</span></h2><p class="case-lead">What happens when a booked room becomes unavailable? RippleFix explores how to recover a schedule while keeping constraints, explanations and human approval in the loop.</p><div class="case-columns"><div><h3>The challenge</h3><p>Room disruptions ripple across a timetable. A replacement must have enough capacity, avoid conflicts and respect unavailable rooms.</p></div><div><h3>Technical approach</h3><p>Constraint-aware room recommendations, scoring and rejection reasons, cascading changes and a supervised approval workflow connected to Google Calendar.</p></div></div><div class="case-walkthrough"><span class="micro-label">WORKFLOW EXPLAINER · ILLUSTRATIVE</span><div class="walk-steps" role="group" aria-label="RippleFix workflow steps"><button type="button" class="walk-step is-active" data-flow-step="0" aria-pressed="true">01 <span>INCIDENT</span></button><button type="button" class="walk-step" data-flow-step="1" aria-pressed="false">02 <span>ANALYSE</span></button><button type="button" class="walk-step" data-flow-step="2" aria-pressed="false">03 <span>EXPLAIN</span></button><button type="button" class="walk-step" data-flow-step="3" aria-pressed="false">04 <span>APPROVE</span></button></div><div class="walk-output" aria-live="polite"><span id="flow-label" class="micro-label">STEP 01 / INCIDENT</span><p id="flow-description">A room becomes unavailable. The system identifies affected bookings and begins recovery analysis.</p></div></div><div class="simulator" id="ripple-simulator">

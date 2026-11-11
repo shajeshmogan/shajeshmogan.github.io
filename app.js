@@ -24,7 +24,7 @@
       motionButton.setAttribute('aria-label', motionEnabled ? 'Turn off animations' : 'Turn on animations');
     }
     if (mobileMotionButton) mobileMotionButton.textContent = motionEnabled ? 'TURN OFF MOTION' : 'TURN ON MOTION';
-    window.dispatchEvent(new Event('neurospace:motion'));
+    window.dispatchEvent(new Event('newworld:motion'));
   }
   function toggleMotion() { userMotionOverride = !motionEnabled; motionEnabled = userMotionOverride; updateMotion(); }
   motionButton?.addEventListener('click', toggleMotion);
@@ -403,7 +403,7 @@
     render();
     if (motionEnabled && pageVisible && orbVisible) raf = requestAnimationFrame(loop);
   }
-  window.addEventListener('neurospace:motion', syncAnimation);
+  window.addEventListener('newworld:motion', syncAnimation);
   document.addEventListener('visibilitychange', () => { pageVisible = !document.hidden; syncAnimation(); });
   if ('IntersectionObserver' in window) {
     const visualObserver = new IntersectionObserver((entries) => {
@@ -412,6 +412,29 @@
     }, { rootMargin: '80px' });
     visualObserver.observe(canvas);
   }
+
+  const projectCards = [...document.querySelectorAll('.project-grid article[id]')];
+  const projectLink = document.getElementById('globe-project');
+  const projectCount = document.getElementById('globe-count');
+  const projectAnnouncement = document.getElementById('globe-announcement');
+  let projectIndex = 0;
+
+  function browseProject(direction, turn = true) {
+    projectIndex = (projectIndex + direction + projectCards.length) % projectCards.length;
+    const card = projectCards[projectIndex];
+    const title = card.querySelector('h3').textContent.trim().replace(/\.$/, '');
+    projectLink.href = '#' + card.id;
+    projectLink.textContent = title;
+    projectCount.textContent = 'PROJECT ' + (projectIndex + 1) + ' OF ' + projectCards.length;
+    projectAnnouncement.textContent = projectCount.textContent + ': ' + title;
+    if (turn) rotateGlobe(direction * -.7, 0);
+  }
+  const previousProject = document.getElementById('globe-prev');
+  const nextProject = document.getElementById('globe-next');
+  previousProject.hidden = nextProject.hidden = false;
+  document.getElementById('globe-help').hidden = false;
+  previousProject.addEventListener('click', () => browseProject(-1));
+  nextProject.addEventListener('click', () => browseProject(1));
 
   canvas.addEventListener('pointermove', (event) => {
     const rect = canvas.getBoundingClientRect();
@@ -426,11 +449,15 @@
   canvas.addEventListener('pointerleave', () => { pointerX = pointerY = 0; });
   canvas.addEventListener('pointerdown', (event) => {
     if (dragStart || event.button !== 0) return;
-    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
+    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: event.clientX };
     canvas.setPointerCapture(event.pointerId);
   });
   function endDrag(event) {
     if (dragStart?.id !== event.pointerId) return;
+    const distance = event.clientX - dragStart.startX;
+    if (event.type === 'pointerup' && Math.abs(distance) >= 45) {
+      browseProject(distance < 0 ? 1 : -1, false);
+    }
     dragStart = null;
     pointerX = pointerY = 0;
     if (!motionEnabled) render();
@@ -448,7 +475,11 @@
   canvas.addEventListener('keydown', (event) => {
     if (!Object.hasOwn(arrowRotation, event.key)) return;
     event.preventDefault();
-    rotateGlobe(...arrowRotation[event.key]);
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      browseProject(event.key === 'ArrowLeft' ? -1 : 1);
+    } else {
+      rotateGlobe(...arrowRotation[event.key]);
+    }
   });
 
   resizeCanvas();

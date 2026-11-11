@@ -1,4 +1,4 @@
-# Shajesh Mogan | AI/ML Portfolio
+# NewWorld | Shajesh Mogan
 
 I study Applied AI & Analytics at Singapore Polytechnic. This portfolio covers my coursework and projects in machine learning, deep learning, and AI workflows.
 
@@ -14,4 +14,4 @@ The site demos use sample data and run in the browser without live inference or 
 
 ## Site stack
 
-HTML, CSS, and vanilla JavaScript, with Canvas 2D and SVG for the neural globe and project diagrams. Hosted on GitHub Pages.
+HTML, CSS, and vanilla JavaScript, with Canvas 2D and SVG for the project globe and diagrams. Hosted on GitHub Pages.
