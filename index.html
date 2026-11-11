@@ -9,19 +9,14 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./refinement.css" />
   <script src="./app.js" defer></script>
   <script src="./cinematic.js" defer></script>
+  <script src="./immersive.js" defer></script>
   <title>NewWorld | Shajesh Mogan</title>
 </head>
 <body id="top" tabindex="-1">
   <a class="skip-link" href="#main">Skip to content</a>
-  <nav class="scene-track" aria-label="Section shortcuts">
-    <a href="#top" data-scene="top" aria-label="Jump to introduction"><span></span><small>INTRO</small></a>
-    <a href="#work" data-scene="work" aria-label="Jump to my projects"><span></span><small>MY PROJECTS</small></a>
-    <a href="#skills" data-scene="skills" aria-label="Jump to skills"><span></span><small>SKILLS</small></a>
-    <a href="#journey" data-scene="journey" aria-label="Jump to education and projects"><span></span><small>EDUCATION</small></a>
-    <a href="#contact" data-scene="contact" aria-label="Jump to contact"><span></span><small>CONTACT</small></a>
-  </nav>
 
   <header class="site-header">
     <a href="#top" class="brand" aria-label="Shajesh Mogan, go to homepage">
@@ -51,26 +46,17 @@
 
           <div class="eyebrow intro-item"><span class="status-led" aria-hidden="true"></span><span>AI &amp; MACHINE LEARNING PORTFOLIO</span></div>
           <h1 id="hero-heading" class="hero-title intro-item">SHAJESH<br><em>MOGAN</em><span class="period">.</span></h1>
-          <p class="hero-description intro-item">I study Applied AI &amp; Analytics at Singapore Polytechnic. My projects cover image and text classification, and AI workflows with human approval.</p>
-          <div class="hero-buttons intro-item"><a href="#work" class="primary-button">VIEW PROJECTS <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="#about" class="text-link">ABOUT ME <span aria-hidden="true">↓</span></a></div>
+          <p class="hero-description intro-item">I build and evaluate machine-learning models, develop AI-assisted workflows, and turn technical ideas into practical tools.</p>
+          <div class="hero-buttons intro-item"><a href="#work" class="primary-button">EXPLORE MY WORK <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="#about" class="text-link">MY APPROACH <span aria-hidden="true">↓</span></a></div>
           <div class="hero-meta intro-item"><span class="meta-line"></span><span>MODELS</span><span class="meta-separator">/</span><span>AGENTS</span><span class="meta-separator">/</span><span>SOFTWARE</span></div>
         </div>
         <div class="hero-visual">
           <div class="globe-stage">
             <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
-            <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Project globe. Use Left or Right to browse projects, or Enter to show the next one."></canvas>
+            <canvas id="neural-canvas" width="640" height="640" aria-hidden="true"></canvas>
             <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
           </div>
-          <div class="globe-projects" role="group" aria-label="Browse projects">
-            <button type="button" id="globe-prev" aria-label="Previous project" hidden>&larr;</button>
-            <div class="globe-selection">
-              <span class="micro-label" id="globe-count">PROJECT 1 OF 5</span>
-              <a id="globe-project" href="#project-ripplefix" aria-describedby="globe-count">RippleFix</a>
-            </div>
-            <button type="button" id="globe-next" aria-label="Next project" hidden>&rarr;</button>
-            <p id="globe-help" hidden>Tap the globe or drag sideways to browse.</p>
-            <span class="sr-only" id="globe-announcement" role="status"></span>
-          </div>
+
         </div>
       </div>
       <div class="hero-bottom container"><div class="hero-scroll"><span class="scroll-tick" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div><div class="hero-count"><span>SHAJESH MOGAN</span> <span class="count-line"></span><span>PORTFOLIO</span></div></div>
@@ -81,12 +67,12 @@
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 01 / 05 ]</span><span>ABOUT</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
         <div class="about-layout">
           <div class="about-statement reveal"><span class="micro-label">ABOUT</span><h2 id="about-heading">ABOUT <em>ME.</em></h2><div class="about-rule"><span>01</span><span>APPLIED AI &amp; ANALYTICS</span></div></div>
-          <div class="about-story reveal"><div class="story-mark" aria-hidden="true">“</div><p class="story-lead">What draws me to AI is the moment I can explain why a model got something wrong. That usually gives me a better idea of what to try next.</p><p>I enjoy taking an idea from a question to something I can run, test, and explain. I’m especially interested in what happens when a model meets data that looks different from what it learned on.</p><div class="story-signature"><span class="signature-line"></span> SHAJESH MOGAN</div></div>
+          <div class="about-story reveal"><div class="story-mark" aria-hidden="true">“</div><p class="story-lead">I am drawn to the questions behind a model’s predictions: what worked, what failed, and what the results actually tell us.</p><p>I enjoy turning a question into a working experiment, measuring the outcome, and improving it. When a system encounters an unexpected case, I want to understand the cause rather than hide the limitation.</p><div class="story-signature"><span class="signature-line"></span> SHAJESH MOGAN</div></div>
         </div>
         <div class="principles-grid">
-          <article class="principle reveal"><span class="principle-index">01 / THINK</span><div class="principle-glyph glyph-observe" aria-hidden="true"><span></span><span></span><span></span></div><h3>Start with a question.</h3><p>I look at the data and decide what a useful answer would look like.</p></article>
-          <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Build a first version.</h3><p>I start with a simple baseline so I have something concrete to test.</p></article>
-          <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Learn from mistakes.</h3><p>I look at the cases that fail, change one thing, and see whether it helps.</p></article>
+          <article class="principle reveal"><span class="principle-index">01 / THINK</span><div class="principle-glyph glyph-observe" aria-hidden="true"><span></span><span></span><span></span></div><h3>Understand the problem.</h3><p>I define the problem and decide what evidence would make a solution useful.</p></article>
+          <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Build and compare.</h3><p>I start with a baseline, then test alternatives against it.</p></article>
+          <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Validate and improve.</h3><p>I examine failures, make targeted changes, and check whether they improve the result.</p></article>
         </div>
       </div>
     </section>
@@ -94,9 +80,9 @@
     <section id="work" tabindex="-1" class="work-section section-pad" aria-labelledby="work-heading">
       <div class="container">
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 02 / 05 ]</span></div></div>
-        <div class="section-heading-row reveal"><h2 id="work-heading">MY <em>PROJECTS.</em></h2><p>AI workflows, deep learning, data engineering, and algorithms.</p></div>
+        <div class="section-heading-row reveal"><h2 id="work-heading">MY <em>PROJECTS.</em></h2><p>Selected work in machine learning, agent-assisted systems, data engineering, and algorithms.</p></div>
         <div class="project-grid">
-          <article id="project-ripplefix" tabindex="-1" class="project-card project-ripple reveal tilt-card">
+          <article id="project-ripplefix" tabindex="-1" class="project-card project-ripple reveal">
             <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 001</span></span><span class="project-type">AI WORKFLOWS</span></div>
             <div class="project-illustration ripple-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">ROOM RECOVERY / WORKFLOW</div>
               <div class="ripple-art-label">CONSTRAINTS → RECOMMENDATION → APPROVAL</div>
@@ -111,17 +97,17 @@
               </svg>
               <div class="ripple-hud"><span>01 INPUT</span><span>02 REASON</span><span>03 APPROVE</span></div>
             </div>
-            <div class="project-info"><div class="project-info-main"><span class="micro-label">AI-GNITION 2026 / TEAM PROJECT</span><h3>RippleFix<span class="name-accent">.</span></h3><p>RippleFix finds available rooms when a booking is disrupted, explains its recommendation, and asks for approval before updating the calendar.</p><div class="project-chips"><span>AI Agents</span><span>Decision Logic</span><span>Google Calendar API</span></div></div><button class="project-open" type="button" data-open-dialog="case-ripplefix" aria-label="Explore RippleFix case study"><span aria-hidden="true">↗</span></button></div>
+            <div class="project-info"><div class="project-info-main"><span class="micro-label">AI-GNITION 2026 / TOP 10 FINALIST / TEAM PROJECT</span><h3>RippleFix<span class="name-accent">.</span></h3><p>A supervised AI-agent prototype for room disruptions, combining incident interpretation, constraint-based recovery, explainable recommendations, and human approval.</p><div class="project-chips"><span>AI Agents</span><span>Decision Logic</span><span>Google Calendar API</span></div></div><button class="project-open" type="button" data-open-dialog="case-ripplefix" aria-label="Explore RippleFix case study"><span aria-hidden="true">↗</span></button></div>
             <button class="project-text-action" type="button" data-open-dialog="case-ripplefix">READ CASE STUDY <span aria-hidden="true">↗</span></button>
           </article>
-          <article id="project-classification" tabindex="-1" class="project-card project-deep reveal tilt-card">
+          <article id="project-classification" tabindex="-1" class="project-card project-deep reveal">
             <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 002</span></span><span class="project-type">DEEP LEARNING</span></div>
             <div class="project-illustration deep-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">MODEL ARCHITECTURES</div>
               <div class="deep-art-label">IMAGE AND LANGUAGE CLASSIFICATION</div>
               <div class="vision-composition"><div class="vision-pixels"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="vision-connector"><span></span><span></span><span></span></div><div class="vision-network"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
               <div class="deep-footer-art"><span>INPUT / FEATURES</span><span>MODEL / LEARN</span><span>OUTPUT / INFER</span></div>
             </div>
-            <div class="project-info"><div class="project-info-main"><span class="micro-label">COMPUTER VISION / LANGUAGE MODELS</span><h3>Handwriting and Sentiment Classification<span class="name-accent">.</span></h3><p>I compared CNNs on EMNIST letters and recurrent networks on English and Malay pizza reviews. The selected models reached 95.34% and 86.44% test accuracy, respectively.</p><div class="project-chips"><span>CNN</span><span>RNN / LSTM / GRU</span><span>Model Evaluation</span></div></div><button class="project-open" type="button" data-open-dialog="case-deep" aria-label="Explore Deep Learning case study"><span aria-hidden="true">↗</span></button></div>
+            <div class="project-info"><div class="project-info-main"><span class="micro-label">COMPUTER VISION / NATURAL LANGUAGE PROCESSING</span><h3>Handwriting and Sentiment Classification<span class="name-accent">.</span></h3><p>Compared CNNs for handwritten-letter recognition and recurrent architectures for English/Malay review sentiment. Selected models reached 95.34% and 86.44% test accuracy, respectively.</p><div class="project-chips"><span>CNN</span><span>RNN / LSTM / GRU</span><span>Model Evaluation</span></div></div><button class="project-open" type="button" data-open-dialog="case-deep" aria-label="Explore Deep Learning case study"><span aria-hidden="true">↗</span></button></div>
             <button class="project-text-action" type="button" data-open-dialog="case-deep">READ CASE STUDY <span aria-hidden="true">↗</span></button>
           </article>
           <article id="project-generation" tabindex="-1" class="project-card reveal">
@@ -158,31 +144,26 @@
             <a class="project-text-action" href="https://github.com/shajeshmogan/shajeshmogan.github.io/blob/main/projects/sorting-algorithms.md">READ CASE STUDY <span aria-hidden="true">&#8599;</span></a>
           </article>
         </div>
-        <div class="work-closer reveal"><div><span class="micro-label">ADDITIONAL WORK</span><p>More experiments and software projects are available through my GitHub profile.</p></div><a href="https://github.com/shajeshmogan" rel="noopener noreferrer" target="_blank" class="text-link">MORE ON GITHUB <span aria-hidden="true">↗</span></a></div>
+        <div class="work-closer reveal"><div><span class="micro-label">ADDITIONAL WORK</span><p>Find additional experiments, source code, and project documentation on GitHub.</p></div><a href="https://github.com/shajeshmogan" rel="noopener noreferrer" target="_blank" class="text-link">MORE ON GITHUB <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
     <section id="skills" tabindex="-1" class="skills-section section-pad" aria-labelledby="skills-heading">
       <div class="container">
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 03 / 05 ]</span><span>SKILLS</span></div></div>
-        <div class="section-heading-row reveal"><h2 id="skills-heading">TECHNICAL <em>SKILLS.</em></h2><p>Select a skill to see where I used it.</p></div>
+        <div class="section-heading-row reveal"><h2 id="skills-heading">TECHNICAL <em>SKILLS.</em></h2><p>Select a field to see the tools I used and the projects behind it.</p></div>
         <div class="skills-workbench reveal">
-          <div class="skill-map" role="group" aria-label="Technical skills map">
-            <div class="skill-map-controls" role="group" aria-label="Rotate skills map"><button type="button" id="skill-rotate-left" aria-label="Rotate skills map left">↶</button><button type="button" id="skill-rotate-right" aria-label="Rotate skills map right">↷</button><button type="button" id="skill-reset-view">RESET VIEW</button></div>
-            <div class="map-grid" aria-hidden="true"></div>
-            <svg class="skill-connections" viewBox="0 0 600 560" preserveAspectRatio="none" aria-hidden="true"><path d="M300 280L120 120M300 280L480 110M300 280L500 305M300 280L440 462M300 280L140 455M300 280L82 302"/></svg>
-            <div class="map-orbit" aria-hidden="true"></div>
-            <div class="map-core" aria-hidden="true"><span class="core-star">✳</span><span>SM</span></div>
-            <button class="skill-node node-ml is-selected" type="button" data-skill="ml" aria-pressed="true"><span class="node-number">01</span><span>MACHINE<br>LEARNING</span></button>
-            <button class="skill-node node-dl" type="button" data-skill="dl" aria-pressed="false"><span class="node-number">02</span><span>DEEP<br>LEARNING</span></button>
-            <button class="skill-node node-agents" type="button" data-skill="agents" aria-pressed="false"><span class="node-number">03</span><span>AI<br>AGENTS</span></button>
-            <button class="skill-node node-software" type="button" data-skill="software" aria-pressed="false"><span class="node-number">04</span><span>SOFTWARE<br>ENGINEERING</span></button>
-            <button class="skill-node node-data" type="button" data-skill="data" aria-pressed="false"><span class="node-number">05</span><span>DATA<br>ENGINEERING</span></button>
-            <button class="skill-node node-analytics" type="button" data-skill="analytics" aria-pressed="false"><span class="node-number">06</span><span>DATA<br>ANALYTICS</span></button>
-          </div>
+          <div class="skill-map skill-grid" role="group" aria-label="Choose a technical skill">
+              <button class="skill-node node-ml is-selected" type="button" data-skill="ml" aria-pressed="true"><span class="node-number">01</span><span>MACHINE<br>LEARNING</span></button>
+              <button class="skill-node node-dl" type="button" data-skill="dl" aria-pressed="false"><span class="node-number">02</span><span>DEEP<br>LEARNING</span></button>
+              <button class="skill-node node-agents" type="button" data-skill="agents" aria-pressed="false"><span class="node-number">03</span><span>AI<br>AGENTS</span></button>
+              <button class="skill-node node-software" type="button" data-skill="software" aria-pressed="false"><span class="node-number">04</span><span>SOFTWARE<br>ENGINEERING</span></button>
+              <button class="skill-node node-data" type="button" data-skill="data" aria-pressed="false"><span class="node-number">05</span><span>DATA<br>ENGINEERING</span></button>
+              <button class="skill-node node-analytics" type="button" data-skill="analytics" aria-pressed="false"><span class="node-number">06</span><span>DATA<br>ANALYTICS</span></button>
+            </div>
           <div class="skill-details" aria-live="polite"><div class="details-top"><span>SKILLS</span><span id="skill-count">01 / 06</span></div><div class="detail-signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><h3 id="skill-title">Machine Learning</h3><p id="skill-description">Training models on structured data and evaluating their predictions.</p><div class="detail-divider"></div><span class="micro-label">TOOLS</span><p id="skill-tech" class="skill-tags-text">Python · Model training · Evaluation</p><span class="micro-label">WHERE I USED IT</span><p id="skill-evidence" class="skill-evidence">Foundations across AI/ML coursework and applied projects.</p></div>
         </div>
-        <p class="skills-note reveal">Skills shown here reflect coursework and hands-on project experience.</p>
+        <p class="skills-note reveal">Skills are drawn from coursework, experiments, and team projects.</p>
       </div>
     </section>
 
@@ -190,16 +171,16 @@
       <div class="container"><div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 04 / 05 ]</span><span>EDUCATION</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
         <div class="journey-layout"><div class="journey-intro reveal"><h2 id="journey-heading">EDUCATION <em>&amp; PROJECTS.</em></h2></div>
           <div class="timeline" id="journey-timeline">
-            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">COURSEWORK</span><h3>Applied AI &amp; Analytics</h3><p>Coursework in programming, data analytics, and machine learning at Singapore Polytechnic.</p><span class="timeline-foot">SINGAPORE POLYTECHNIC</span></div>
+            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">COURSEWORK</span><h3>Applied AI &amp; Analytics</h3><p>Studying Applied AI &amp; Analytics at Singapore Polytechnic, with coursework spanning data, programming, and machine learning.</p><span class="timeline-foot">SINGAPORE POLYTECHNIC</span></div>
             <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">DEEP LEARNING COURSEWORK</span><h3>Handwriting and sentiment classification</h3><p>Trained a CNN for handwriting classification and compared recurrent models for sentiment classification.</p><span class="timeline-foot">DEEP LEARNING PROJECT</span></div>
-            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">TEAM PROJECT / 2026</span><h3>Room recovery with RippleFix</h3><p>Worked on RippleFix at AI-GNITION 2026. The project recommends rooms after a booking disruption and asks for approval before applying changes.</p><span class="timeline-foot">AI-GNITION 2026 / RIPPLEFIX</span></div>
+            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">TEAM PROJECT / 2026</span><h3>Room recovery with RippleFix</h3><p>Contributed to RippleFix, an AI-GNITION 2026 Top 10 finalist. The system supports explainable room recovery with human oversight.</p><span class="timeline-foot">AI-GNITION 2026 / RIPPLEFIX</span></div>
             <div class="timeline-item timeline-future reveal"><div class="timeline-node"></div><span class="timeline-label">CURRENT FOCUS</span><h3>Machine learning and agent workflows</h3></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" tabindex="-1" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NewWorld / SHAJESH MOGAN</span></div></div></section>
+    <section id="contact" tabindex="-1" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m looking for AI/ML internships and opportunities to contribute to practical, well-tested software.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NewWorld / SHAJESH MOGAN</span></div></div></section>
   </main>
   <footer class="footer"><div class="container footer-inner"><div class="footer-brand">New<span>World</span></div><span>SHAJESH MOGAN / AI &amp; ML PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a><span>© <span id="year"></span></span></div></footer>
 
@@ -208,7 +189,7 @@
       <div class="case-header"><span>DATA ENGINEERING</span><button type="button" class="dialog-close" data-close-dialog>Close</button></div>
       <div class="case-body">
         <h2 id="library-title">Green Grass Library Data Warehouse</h2>
-        <p class="case-lead">Our team built a MySQL warehouse to analyse completed library loans.</p>
+        <p class="case-lead">Our team built a MySQL data warehouse to analyse completed library loans.</p>
         <div class="case-columns">
           <div><h3>My contribution</h3><p>I standardised dates and status values, corrected a membership tier reference, kept 43 missing occupations as NULL, and removed one loan row whose staff, book copy, and dates could not be recovered. After loading 12,344 operational loans, I checked for invalid references and due dates. All four checks returned zero exceptions.</p></div>
           <div><h3>Warehouse and analysis</h3><p>Our star schema stored one row per completed loan of a physical copy, with member, staff, book, and time dimensions. The team wrote eight SQL analyses. One found that nearly 70% of completed loans started on weekends. Another compared loans per copy across genres to account for collection size.</p></div>
@@ -217,9 +198,9 @@
     </div>
   </dialog>
   <dialog id="case-ripplefix" class="case-dialog" aria-labelledby="ripple-title">
-    <div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 001</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close RippleFix case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">AI WORKFLOWS / AI-GNITION 2026</span><h2 id="ripple-title">RippleFix<span class="period">.</span></h2><p class="case-lead">What happens when a booked room becomes unavailable? RippleFix explores how to recover a schedule while keeping constraints, explanations and human approval in the loop.</p><div class="case-columns"><div><h3>The challenge</h3><p>Room disruptions ripple across a timetable. A replacement must have enough capacity, avoid conflicts and respect unavailable rooms.</p></div><div><h3>Technical approach</h3><p>Constraint-aware room recommendations, scoring and rejection reasons, cascading changes and a supervised approval workflow connected to Google Calendar.</p></div></div><div class="case-walkthrough"><span class="micro-label">WORKFLOW EXPLAINER · ILLUSTRATIVE</span><div class="walk-steps" role="group" aria-label="RippleFix workflow steps"><button type="button" class="walk-step is-active" data-flow-step="0" aria-pressed="true">01 <span>INCIDENT</span></button><button type="button" class="walk-step" data-flow-step="1" aria-pressed="false">02 <span>ANALYSE</span></button><button type="button" class="walk-step" data-flow-step="2" aria-pressed="false">03 <span>EXPLAIN</span></button><button type="button" class="walk-step" data-flow-step="3" aria-pressed="false">04 <span>APPROVE</span></button></div><div class="walk-output" aria-live="polite"><span id="flow-label" class="micro-label">STEP 01 / INCIDENT</span><p id="flow-description">A room becomes unavailable. The system identifies affected bookings and begins recovery analysis.</p></div></div><div class="simulator" id="ripple-simulator">
+    <div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 001</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close RippleFix case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">AI WORKFLOWS / AI-GNITION 2026</span><h2 id="ripple-title">RippleFix<span class="period">.</span></h2><p class="case-lead">RippleFix explores how to restore a disrupted timetable using validated room constraints, explainable recommendations, and explicit human approval.</p><div class="case-columns"><div><h3>The challenge</h3><p>A replacement must meet capacity and equipment requirements, avoid timetable conflicts, and respect unavailable rooms.</p></div><div><h3>Technical approach</h3><p>Deterministic scoring and cascading recovery underpin an agent-assisted prototype. The team designed read-only investigation tools, review gates, and safeguarded Calendar/Gmail adapters; live LLM/provider execution remains unverified.</p></div></div><div class="case-walkthrough"><span class="micro-label">WORKFLOW EXPLAINER · ILLUSTRATIVE</span><div class="walk-steps" role="group" aria-label="RippleFix workflow steps"><button type="button" class="walk-step is-active" data-flow-step="0" aria-pressed="true">01 <span>INCIDENT</span></button><button type="button" class="walk-step" data-flow-step="1" aria-pressed="false">02 <span>ANALYSE</span></button><button type="button" class="walk-step" data-flow-step="2" aria-pressed="false">03 <span>EXPLAIN</span></button><button type="button" class="walk-step" data-flow-step="3" aria-pressed="false">04 <span>APPROVE</span></button></div><div class="walk-output" aria-live="polite"><span id="flow-label" class="micro-label">STEP 01 / INCIDENT</span><p id="flow-description">A room becomes unavailable. The system identifies affected bookings and begins recovery analysis.</p></div></div><div class="simulator" id="ripple-simulator">
           <div class="simulator-head"><div><span class="micro-label">ROOM RECOVERY · SIMULATED</span><h3>Room recovery example</h3></div><span class="simulator-status" id="sim-status">STANDBY</span></div>
-          <p class="sim-helper">This example uses fictional bookings and room conditions. All actions stay in the browser and leave calendar events untouched.</p>
+          <p class="sim-helper">This demonstration uses fictional rooms and bookings. All actions remain in your browser; no calendar events are modified.</p>
           <div class="sim-room-grid" role="group" aria-label="Example room statuses">
             <div class="sim-room is-broken" data-room="B401"><span>B401</span><small>INCIDENT</small><strong>UNAVAILABLE</strong></div>
             <div class="sim-room" data-room="B402"><span>B402</span><small>CANDIDATE</small><strong>UNCHECKED</strong></div>
@@ -230,7 +211,7 @@
         </div>
         <a class="case-profile-link" href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer">SEE MY GITHUB ↗</a></div></div>
   </dialog>
-  <dialog id="case-deep" class="case-dialog" aria-labelledby="deep-title"><div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 002</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close Deep Learning case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">COMPUTER VISION / NATURAL LANGUAGE</span><h2 id="deep-title">Handwriting and Sentiment Classification<span class="period">.</span></h2><p class="case-lead">Understanding how neural architectures learn different kinds of patterns — from handwritten characters to language sentiment.</p><div class="case-columns"><div><h3>Computer vision</h3><p>The selected CNN reached 95.34% test accuracy on EMNIST letters without augmentation. Similar letters such as I/L and G/Q remained difficult to distinguish.</p></div><div><h3>Language</h3><p>I compared SimpleRNN, LSTM, GRU and bidirectional LSTM on English and Malay pizza reviews. The selected bidirectional LSTM reached 86.44% test accuracy, with neutral reviews the hardest to classify.</p></div></div><div class="model-panel"><span class="micro-label">LEARNING TASKS</span><div class="model-tabs" role="group" aria-label="Choose Deep Learning exploration"><button class="model-tab is-active" type="button" data-model-tab="vision" aria-pressed="true">VISION / CNN</button><button class="model-tab" type="button" data-model-tab="language" aria-pressed="false">LANGUAGE / RECURRENT</button></div><div class="model-stage" aria-live="polite"><div id="model-flow" class="model-flow"><span>IMAGE</span><b>→</b><span>CONVOLUTION</span><b>→</b><span>FEATURES</span><b>→</b><span>CLASS</span></div><p id="model-description">A CNN learns image features to support handwriting classification. This diagram shows the steps in the classification pipeline.</p></div></div><div class="architecture-explorer">
+  <dialog id="case-deep" class="case-dialog" aria-labelledby="deep-title"><div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 002</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close Deep Learning case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">COMPUTER VISION / NATURAL LANGUAGE</span><h2 id="deep-title">Handwriting and Sentiment Classification<span class="period">.</span></h2><p class="case-lead">Comparing how neural architectures process two different inputs: handwritten characters and written reviews.</p><div class="case-columns"><div><h3>Computer vision</h3><p>The selected CNN reached 95.34% test accuracy on EMNIST letters without augmentation. Similar letters such as I/L and G/Q remained difficult to distinguish.</p></div><div><h3>Language</h3><p>I compared SimpleRNN, LSTM, GRU, and bidirectional LSTM architectures on English and Malay pizza reviews. The selected bidirectional LSTM reached 86.44% test accuracy, with neutral reviews the hardest to classify.</p></div></div><div class="model-panel"><span class="micro-label">LEARNING TASKS</span><div class="model-tabs" role="group" aria-label="Choose Deep Learning exploration"><button class="model-tab is-active" type="button" data-model-tab="vision" aria-pressed="true">VISION / CNN</button><button class="model-tab" type="button" data-model-tab="language" aria-pressed="false">LANGUAGE / RECURRENT</button></div><div class="model-stage" aria-live="polite"><div id="model-flow" class="model-flow"><span>IMAGE</span><b>→</b><span>CONVOLUTION</span><b>→</b><span>FEATURES</span><b>→</b><span>CLASS</span></div><p id="model-description">A CNN learns image features to support handwriting classification. This diagram shows the steps in the classification pipeline.</p></div></div><div class="architecture-explorer">
         <div class="arch-intro"><div><span class="micro-label">MODEL ARCHITECTURES</span><h3>Architecture explorer</h3></div><span>ILLUSTRATIVE / NO LIVE INFERENCE</span></div>
         <div class="arch-switches" role="group" aria-label="Choose neural network architecture">
           <button type="button" class="arch-switch is-active" data-architecture="cnn" aria-pressed="true">CNN</button>

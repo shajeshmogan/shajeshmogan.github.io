@@ -69,26 +69,13 @@
     revealItems.forEach((item) => revealObserver.observe(item));
   }
 
-  // Gentle tilt is decoration only; reduced-motion and touch devices do not use it.
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.tilt-card').forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        if (!motionEnabled || !card.classList.contains('is-visible')) return;
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        card.style.transform = `perspective(900px) rotateX(${(-y * 2.4).toFixed(2)}deg) rotateY(${(x * 2.4).toFixed(2)}deg)`;
-      }, { passive: true });
-      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-    });
-  }
-
+  // Cards stay still; the content is the interaction.
   const skills = {
     ml: {
       index: '01', title: 'Machine Learning',
       description: 'Training models on structured data and evaluating their predictions.',
       tech: 'Python · Model training · Evaluation',
-      evidence: 'Foundations across AI/ML coursework and applied projects.'
+      evidence: 'Model training and evaluation in applied AI coursework.'
     },
     dl: {
       index: '02', title: 'Deep Learning',
@@ -98,27 +85,27 @@
     },
     agents: {
       index: '03', title: 'AI Agents',
-      description: 'Using booking constraints to recommend rooms and asking for approval before updating a calendar.',
-      tech: 'Agent workflows · Tool integration · Approval gates',
-      evidence: 'RippleFix: disruption-recovery workflow and supervised actions.'
+      description: 'Designing supervised agent workflows that use verified evidence and require approval for consequential actions.',
+      tech: 'Tool orchestration · Constraint validation · Human approval',
+      evidence: 'RippleFix: agent-assisted investigations, scheduling recovery, and approval gates.'
     },
     software: {
       index: '04', title: 'Software Engineering',
       description: 'Building web interfaces and connecting them to application logic and APIs.',
       tech: 'JavaScript · Python · APIs · MVC-style structure',
-      evidence: 'Backend web development coursework and project integrations.'
+      evidence: 'Full-stack coursework and API development for RippleFix.'
     },
     data: {
       index: '05', title: 'Data Engineering',
       description: 'Preparing and transforming data for analysis.',
       tech: 'Data pipelines · Data preparation · Python',
-      evidence: 'Data engineering coursework and applied datasets.'
+      evidence: 'Green Grass Library: source-data validation and MySQL warehouse work.'
     },
     analytics: {
       index: '06', title: 'Data Analytics',
       description: 'Exploring datasets and using charts to explain patterns.',
       tech: 'Exploratory analysis · Visualisation · Problem framing',
-      evidence: 'Analytics learning and project work.'
+      evidence: 'Exploratory analyses and visual communication across coursework.'
     }
   };
   const skillButtons = document.querySelectorAll('[data-skill]');
@@ -248,9 +235,6 @@
   let cssWidth = 1, cssHeight = 1;
   let auraGradient = null, coreGradient = null;
   let time = 0, angleY = -.34, angleX = -.2;
-  let remainingTurn = 0;
-  let pointerX = 0, pointerY = 0;
-  let dragStart = null;
   let raf = 0;
   let lastTime = 0;
   let lastDraw = 0;
@@ -301,8 +285,8 @@
     context.clearRect(0, 0, w, h);
     const cx = w / 2, cy = h / 2;
     const scale = Math.min(w, h) * .325;
-    const yaw = angleY + pointerX * .11;
-    const pitch = angleX + pointerY * .08;
+    const yaw = angleY;
+    const pitch = angleX;
     const projected = nodes.map((p) => getProjection(p, yaw, pitch, scale, cx, cy));
 
     context.fillStyle = auraGradient;
@@ -378,11 +362,7 @@
     const delta = Math.min(Math.max(now - (lastTime || now), 0), 80);
     lastTime = now;
     time += delta;
-    if (!dragStart) {
-      const turn = remainingTurn * (1 - Math.exp(-delta / 85));
-      angleY += turn + delta * .00010;
-      remainingTurn -= turn;
-    }
+    angleY += delta * .000075;
     render();
     raf = requestAnimationFrame(loop);
   }
@@ -391,10 +371,6 @@
     raf = 0;
     lastTime = 0;
     lastDraw = 0;
-    if (!motionEnabled) {
-      angleY += remainingTurn;
-      remainingTurn = 0;
-    }
     render();
     if (motionEnabled && pageVisible && orbVisible) raf = requestAnimationFrame(loop);
   }
@@ -408,88 +384,7 @@
     visualObserver.observe(canvas);
   }
 
-  const projectCards = [...document.querySelectorAll('.project-grid article[id]')];
-  const projectLink = document.getElementById('globe-project');
-  const projectCount = document.getElementById('globe-count');
-  const projectAnnouncement = document.getElementById('globe-announcement');
-  let projectIndex = 0;
-
-  function browseProject(direction, turn = true) {
-    projectIndex = (projectIndex + direction + projectCards.length) % projectCards.length;
-    const card = projectCards[projectIndex];
-    const title = card.querySelector('h3').textContent.trim().replace(/\.$/, '');
-    projectLink.href = '#' + card.id;
-    projectLink.textContent = title;
-    projectCount.textContent = 'PROJECT ' + (projectIndex + 1) + ' OF ' + projectCards.length;
-    projectAnnouncement.textContent = projectCount.textContent + ': ' + title;
-    if (turn) {
-      if (motionEnabled) remainingTurn -= direction * .7;
-      else rotateGlobe(direction * -.7, 0);
-    }
-  }
-  const previousProject = document.getElementById('globe-prev');
-  const nextProject = document.getElementById('globe-next');
-  previousProject.hidden = nextProject.hidden = false;
-  document.getElementById('globe-help').hidden = false;
-  previousProject.addEventListener('click', () => browseProject(-1));
-  nextProject.addEventListener('click', () => browseProject(1));
-
-  canvas.addEventListener('pointermove', (event) => {
-    const rect = canvas.getBoundingClientRect();
-    pointerX = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - .5) * 2));
-    pointerY = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - .5) * 2));
-    if (dragStart?.id === event.pointerId) {
-      rotateGlobe((event.clientX - dragStart.x) * .006, (event.clientY - dragStart.y) * .004);
-      dragStart.x = event.clientX;
-      dragStart.y = event.clientY;
-    }
-  }, { passive: true });
-  canvas.addEventListener('pointerleave', () => { pointerX = pointerY = 0; });
-  canvas.addEventListener('pointerdown', (event) => {
-    if (dragStart || event.button !== 0) return;
-    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY };
-    canvas.setPointerCapture(event.pointerId);
-  });
-  function endDrag(event) {
-    if (dragStart?.id !== event.pointerId) return;
-    const distance = event.clientX - dragStart.startX;
-    const verticalDistance = Math.abs(event.clientY - dragStart.startY);
-    if (event.type === 'pointerup') {
-      if (Math.abs(distance) >= 32 && Math.abs(distance) > verticalDistance) {
-        browseProject(distance < 0 ? 1 : -1, false);
-      } else if (Math.abs(distance) < 6 && verticalDistance < 6) {
-        browseProject(1);
-      }
-    }
-    dragStart = null;
-    pointerX = pointerY = 0;
-    if (!motionEnabled) render();
-  }
-  canvas.addEventListener('pointerup', endDrag);
-  canvas.addEventListener('pointercancel', endDrag);
-  canvas.addEventListener('lostpointercapture', endDrag);
-
-  function rotateGlobe(yaw, pitch) {
-    angleY += yaw;
-    angleX = Math.max(-1, Math.min(1, angleX + pitch));
-    if (!motionEnabled) render();
-  }
-  const arrowRotation = { ArrowLeft: [-.15, 0], ArrowRight: [.15, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
-  canvas.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      browseProject(1);
-      return;
-    }
-    if (!Object.hasOwn(arrowRotation, event.key)) return;
-    event.preventDefault();
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      browseProject(event.key === 'ArrowLeft' ? -1 : 1);
-    } else {
-      rotateGlobe(...arrowRotation[event.key]);
-    }
-  });
-
+  // The globe is ambient. The project cards below remain the sole project navigation.
   resizeCanvas();
   syncAnimation();
 })();
