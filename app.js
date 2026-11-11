@@ -17,6 +17,11 @@
 
   function updateMotion() {
     root.classList.toggle('no-motion', !motionEnabled);
+    const globe = document.getElementById('neural-canvas');
+    if (globe) {
+      globe.tabIndex = motionEnabled ? 0 : -1;
+      globe.setAttribute('aria-hidden', String(!motionEnabled));
+    }
     if (motionLabel) motionLabel.textContent = motionEnabled ? 'MOTION ON' : 'MOTION OFF';
     if (motionButton) {
       motionButton.setAttribute('aria-pressed', String(!motionEnabled));
@@ -235,6 +240,9 @@
   let cssWidth = 1, cssHeight = 1;
   let auraGradient = null, coreGradient = null;
   let time = 0, angleY = -.34, angleX = -.2;
+  let scrollYaw = 0, dragYaw = 0;
+  let dragState = null;
+  const initialYaw = -.34;
   let raf = 0;
   let lastTime = 0;
   let lastDraw = 0;
@@ -362,7 +370,10 @@
     const delta = Math.min(Math.max(now - (lastTime || now), 0), 80);
     lastTime = now;
     time += delta;
-    angleY += delta * .000075;
+    // Motion follows page scroll and manual dragging; no project carousel.
+    const ease = 1 - Math.exp(-delta / 125);
+    const targetYaw = initialYaw + scrollYaw + dragYaw;
+    angleY += (targetYaw - angleY) * ease;
     render();
     raf = requestAnimationFrame(loop);
   }
@@ -384,7 +395,34 @@
     visualObserver.observe(canvas);
   }
 
-  // The globe is ambient. The project cards below remain the sole project navigation.
+  // Scroll can rotate the globe without hijacking navigation or changing projects.
+  window.addEventListener('newworld:v4globe', (event) => {
+    if (!motionEnabled) return;
+    scrollYaw = Math.max(0, Math.min(3.45, Number(event.detail?.yaw) || 0));
+    if (orbVisible && pageVisible && !raf) syncAnimation();
+  });
+  canvas.addEventListener('pointerdown', (event) => {
+    if (!motionEnabled || event.button !== 0 || dragState) return;
+    dragState = { id: event.pointerId, x: event.clientX };
+    canvas.setPointerCapture(event.pointerId);
+  });
+  canvas.addEventListener('pointermove', (event) => {
+    if (!dragState || dragState.id !== event.pointerId) return;
+    const delta = event.clientX - dragState.x;
+    dragState.x = event.clientX;
+    dragYaw += Math.max(-60, Math.min(60, delta)) * .009;
+  }, { passive: true });
+  const endGlobeDrag = (event) => {
+    if (dragState?.id === event.pointerId) dragState = null;
+  };
+  canvas.addEventListener('pointerup', endGlobeDrag);
+  canvas.addEventListener('pointercancel', endGlobeDrag);
+  canvas.addEventListener('lostpointercapture', endGlobeDrag);
+  canvas.addEventListener('keydown', (event) => {
+    if (!motionEnabled || !['ArrowLeft','ArrowRight'].includes(event.key)) return;
+    event.preventDefault();
+    dragYaw += event.key === 'ArrowLeft' ? -.3 : .3;
+  });
   resizeCanvas();
   syncAnimation();
 })();
