@@ -7,15 +7,26 @@
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const motion = () => !root.classList.contains('no-motion');
 
-  // A dedicated navigation rail. Native anchors remain functional without JS.
   const sceneLinks = $$('[data-scene]');
   const scenes = sceneLinks.map((link) => doc.getElementById(link.dataset.scene));
+  const header = $('.site-header');
+  sceneLinks.forEach((link, index) => {
+    const section = scenes[index];
+    if (!section) return;
+    link.addEventListener('click', (event) => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      if (window.location.hash !== link.hash) history.pushState(null, '', link.hash);
+      section.focus({ preventScroll: true });
+      section.scrollIntoView({ block: 'start' });
+    });
+  });
   let scrollQueued = false;
   const hero = $('.hero');
   const timeline = $('#journey-timeline');
   function updateScrollScene() {
     scrollQueued = false;
-    const reference = window.innerHeight * 0.43;
+    const reference = (header?.offsetHeight ?? 0) + 16;
     let active = 'top';
     for (const scene of scenes) {
       if (scene && scene.getBoundingClientRect().top <= reference) active = scene.id;

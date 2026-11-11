@@ -106,38 +106,37 @@
     },
     dl: {
       index: '02', title: 'Deep Learning',
-      description: 'Learning how neural architectures represent complex patterns in images and language, and how to compare model behaviour.',
+      description: 'Training and comparing neural networks for image and text classification.',
       tech: 'CNN · SimpleRNN · LSTM · GRU',
       evidence: 'Handwriting classification and sentiment analysis project.'
     },
     agents: {
       index: '03', title: 'AI Agents',
-      description: 'Exploring tool-connected workflows, decision support, explanations and human approval before sensitive changes.',
+      description: 'Using booking constraints to recommend rooms and asking for approval before updating a calendar.',
       tech: 'Agent workflows · Tool integration · Approval gates',
       evidence: 'RippleFix: disruption-recovery workflow and supervised actions.'
     },
     software: {
       index: '04', title: 'Software Engineering',
-      description: 'Connecting interfaces, application logic and services to build systems that can be understood and maintained.',
+      description: 'Building web interfaces and connecting them to application logic and APIs.',
       tech: 'JavaScript · Python · APIs · MVC-style structure',
       evidence: 'Backend web development coursework and project integrations.'
     },
     data: {
       index: '05', title: 'Data Engineering',
-      description: 'Working with the preparation, transformation and structure of data that supports analysis and intelligent applications.',
+      description: 'Preparing and transforming data for analysis.',
       tech: 'Data pipelines · Data preparation · Python',
       evidence: 'Data engineering coursework and applied datasets.'
     },
     analytics: {
       index: '06', title: 'Data Analytics',
-      description: 'Turning raw data into patterns, evidence and useful decisions through analysis, visualisation and careful interpretation.',
+      description: 'Exploring datasets and using charts to explain patterns.',
       tech: 'Exploratory analysis · Visualisation · Problem framing',
       evidence: 'Analytics learning and project work.'
     }
   };
   const skillButtons = document.querySelectorAll('[data-skill]');
   const skillTitle = document.getElementById('skill-title');
-  const skillIndex = document.getElementById('skill-index');
   const skillCount = document.getElementById('skill-count');
   const skillDescription = document.getElementById('skill-description');
   const skillTech = document.getElementById('skill-tech');
@@ -151,7 +150,6 @@
       button.setAttribute('aria-pressed', String(active));
     });
     if (skillTitle) skillTitle.textContent = chosen.title;
-    if (skillIndex) skillIndex.textContent = `NODE_${chosen.index} / ACTIVE`;
     if (skillCount) skillCount.textContent = `${chosen.index} / 06`;
     if (skillDescription) skillDescription.textContent = chosen.description;
     if (skillTech) skillTech.textContent = chosen.tech;
