@@ -20,6 +20,11 @@
     for (const scene of scenes) {
       if (scene && scene.getBoundingClientRect().top <= reference) active = scene.id;
     }
+    const lastScene = scenes.at(-1);
+    if (lastScene && window.scrollY > 0 &&
+        window.scrollY + window.innerHeight >= doc.documentElement.scrollHeight - 2) {
+      active = lastScene.id;
+    }
     for (const link of sceneLinks) {
       const current = link.dataset.scene === active;
       link.classList.toggle('is-current',current);
@@ -65,7 +70,6 @@
   const core = skillMap?.querySelector('.map-core');
   const coordinates = buttons.map((btn,index)=>({button:btn,angle:index*Math.PI/3-Math.PI*2/3}));
   let yaw=0, drag=null;
-  const isWide = () => window.innerWidth >= 600;
   function drawConstellation(){
     if(!skillMap||!svg||!paths||!core)return;
     const rect=skillMap.getBoundingClientRect();
@@ -100,19 +104,23 @@
   $('#skill-reset-view')?.addEventListener('click',()=>{yaw=0;drawConstellation();});
   if(skillMap){
     skillMap.addEventListener('pointerdown',event=>{
-      if(event.target.closest('button')||!isWide()||!motion())return;
-      if(event.pointerType==='mouse'&&event.button!==0)return;
-      drag={x:event.clientX,yaw};skillMap.setPointerCapture(event.pointerId);
+      if(drag||event.target.closest('button')||event.button!==0)return;
+      drag={id:event.pointerId,x:event.clientX,yaw};skillMap.setPointerCapture(event.pointerId);
       skillMap.classList.add('is-dragging');
     });
     skillMap.addEventListener('pointermove',event=>{
-      if(!drag)return;
+      if(drag?.id!==event.pointerId)return;
       yaw=drag.yaw+(event.clientX-drag.x)*.0055;
       drawConstellation();
     });
-    const stopDrag=()=>{drag=null;skillMap.classList.remove('is-dragging')};
+    function stopDrag(event) {
+      if (drag?.id !== event.pointerId) return;
+      drag = null;
+      skillMap.classList.remove('is-dragging');
+    }
     skillMap.addEventListener('pointerup',stopDrag);
     skillMap.addEventListener('pointercancel',stopDrag);
+    skillMap.addEventListener('lostpointercapture',stopDrag);
     const ro=typeof ResizeObserver !== 'undefined'?new ResizeObserver(drawConstellation):null;
     ro?.observe(skillMap);if(!ro)window.addEventListener('resize',drawConstellation,{passive:true});
     drawConstellation();

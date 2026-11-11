@@ -388,7 +388,7 @@
     const delta = Math.min(Math.max(now - (lastTime || now), 0), 80);
     lastTime = now;
     time += delta;
-    if (!dragStart) { angleY += delta * .00010; angleX = -.19 + Math.sin(time * .0002) * .065; }
+    if (!dragStart) angleY += delta * .00010;
     render();
     raf = requestAnimationFrame(loop);
   }
@@ -414,22 +414,39 @@
     const rect = canvas.getBoundingClientRect();
     pointerX = Math.max(-1, Math.min(1, ((event.clientX - rect.left) / rect.width - .5) * 2));
     pointerY = Math.max(-1, Math.min(1, ((event.clientY - rect.top) / rect.height - .5) * 2));
-    if (dragStart && motionEnabled) {
-      angleY += (event.clientX - dragStart.x) * .006;
-      angleX += (event.clientY - dragStart.y) * .004;
-      angleX = Math.max(-1, Math.min(1, angleX));
-      dragStart = { x: event.clientX, y: event.clientY };
+    if (dragStart?.id === event.pointerId) {
+      rotateGlobe((event.clientX - dragStart.x) * .006, (event.clientY - dragStart.y) * .004);
+      dragStart.x = event.clientX;
+      dragStart.y = event.clientY;
     }
-    // Reduced motion preserves the stable image instead of repainting per pointer event.
   }, { passive: true });
-  canvas.addEventListener('pointerleave', () => { pointerX = pointerY = 0; dragStart = null; });
+  canvas.addEventListener('pointerleave', () => { pointerX = pointerY = 0; });
   canvas.addEventListener('pointerdown', (event) => {
-    if (!motionEnabled || event.pointerType === 'touch') return;
-    dragStart = { x: event.clientX, y: event.clientY };
+    if (dragStart || event.button !== 0) return;
+    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY };
     canvas.setPointerCapture(event.pointerId);
   });
-  canvas.addEventListener('pointerup', () => { dragStart = null; });
-  canvas.addEventListener('pointercancel', () => { dragStart = null; });
+  function endDrag(event) {
+    if (dragStart?.id !== event.pointerId) return;
+    dragStart = null;
+    pointerX = pointerY = 0;
+    if (!motionEnabled) render();
+  }
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', endDrag);
+  canvas.addEventListener('lostpointercapture', endDrag);
+
+  function rotateGlobe(yaw, pitch) {
+    angleY += yaw;
+    angleX = Math.max(-1, Math.min(1, angleX + pitch));
+    if (!motionEnabled) render();
+  }
+  const arrowRotation = { ArrowLeft: [-.15, 0], ArrowRight: [.15, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
+  canvas.addEventListener('keydown', (event) => {
+    if (!Object.hasOwn(arrowRotation, event.key)) return;
+    event.preventDefault();
+    rotateGlobe(...arrowRotation[event.key]);
+  });
 
   resizeCanvas();
   syncAnimation();

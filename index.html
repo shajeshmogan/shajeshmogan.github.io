@@ -13,18 +13,18 @@
   <script src="./cinematic.js" defer></script>
   <title>Shajesh Mogan | AI & Machine Learning Portfolio</title>
 </head>
-<body>
+<body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
   <div id="scroll-progress" class="progress-bar" aria-hidden="true"></div>
-  <div class="scene-track" aria-label="Section shortcuts">
+  <nav class="scene-track" aria-label="Section shortcuts">
     <a href="#top" data-scene="top" aria-label="Jump to introduction"><span></span><small>INTRO</small></a>
     <a href="#work" data-scene="work" aria-label="Jump to selected work"><span></span><small>WORK</small></a>
     <a href="#skills" data-scene="skills" aria-label="Jump to skills"><span></span><small>SKILLS</small></a>
     <a href="#journey" data-scene="journey" aria-label="Jump to journey"><span></span><small>JOURNEY</small></a>
     <a href="#contact" data-scene="contact" aria-label="Jump to contact"><span></span><small>CONTACT</small></a>
-  </div>
+  </nav>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <a href="#top" class="brand" aria-label="Shajesh Mogan, go to homepage">
       <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span>NEURO<span class="brand-light">SPACE</span></span>
@@ -56,10 +56,10 @@
           <div class="hero-buttons intro-item"><a href="#work" class="primary-button">VIEW PROJECTS <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="#about" class="text-link">ABOUT ME <span aria-hidden="true">↓</span></a></div>
           <div class="hero-meta intro-item"><span class="meta-line"></span><span>MODELS</span><span class="meta-separator">/</span><span>AGENTS</span><span class="meta-separator">/</span><span>SOFTWARE</span></div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
+        <div class="hero-visual">
           <span class="hero-visual-hint" aria-hidden="true">DRAG TO ROTATE</span>
           <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
-          <canvas id="neural-canvas" width="640" height="640" aria-hidden="true"></canvas>
+          <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Neural globe. Use the arrow keys to rotate."></canvas>
           <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
           <div class="orb-chip orb-chip-top" aria-hidden="true"><span class="tiny-square"></span> NEURAL NETWORK</div>
         </div>
@@ -67,7 +67,7 @@
       <div class="hero-bottom container"><div class="hero-scroll"><span class="scroll-tick" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div><div class="hero-count"><span>SHAJESH MOGAN</span> <span class="count-line"></span><span>PORTFOLIO</span></div></div>
     </section>
 
-    <section id="about" class="section-pad about-section" aria-labelledby="about-heading">
+    <section id="about" tabindex="-1" class="section-pad about-section" aria-labelledby="about-heading">
       <div class="container">
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 01 / 05 ]</span><span>ABOUT</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
         <div class="about-layout">
@@ -82,7 +82,7 @@
       </div>
     </section>
 
-    <section id="work" class="work-section section-pad" aria-labelledby="work-heading">
+    <section id="work" tabindex="-1" class="work-section section-pad" aria-labelledby="work-heading">
       <div class="container">
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 02 / 05 ]</span><span>SELECTED WORK</span></div><span class="tiny-status">03 FEATURED PROJECTS</span></div>
         <div class="section-heading-row reveal"><h2 id="work-heading">SELECTED <em>PROJECTS.</em></h2><p>Room recovery, handwriting and sentiment classification, image generation, and reinforcement learning.</p></div>
@@ -131,7 +131,7 @@
       </div>
     </section>
 
-    <section id="skills" class="skills-section section-pad" aria-labelledby="skills-heading">
+    <section id="skills" tabindex="-1" class="skills-section section-pad" aria-labelledby="skills-heading">
       <div class="container">
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 03 / 05 ]</span><span>THE TECHNICAL SKILLS</span></div></div>
         <div class="section-heading-row reveal"><h2 id="skills-heading">TECHNICAL <em>SKILLS.</em></h2><p>Select a skill to see where I used it.</p></div>
@@ -155,7 +155,7 @@
       </div>
     </section>
 
-    <section id="journey" class="journey-section section-pad" aria-labelledby="journey-heading">
+    <section id="journey" tabindex="-1" class="journey-section section-pad" aria-labelledby="journey-heading">
       <div class="container"><div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 04 / 05 ]</span><span>THE JOURNEY</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
         <div class="journey-layout"><div class="journey-intro reveal"><h2 id="journey-heading">EDUCATION <em>&amp; PROJECTS.</em></h2></div>
           <div class="timeline" id="journey-timeline">
@@ -168,7 +168,7 @@
       </div>
     </section>
 
-    <section id="contact" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NEUROSPACE / SHAJESH MOGAN</span></div></div></section>
+    <section id="contact" tabindex="-1" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">GITHUB PROFILE <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NEUROSPACE / SHAJESH MOGAN</span></div></div></section>
   </main>
   <footer class="footer"><div class="container footer-inner"><div class="footer-brand">NEURO<span>SPACE</span></div><span>SHAJESH MOGAN / AI &amp; ML PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a><span>© <span id="year"></span></span></div></footer>
 
