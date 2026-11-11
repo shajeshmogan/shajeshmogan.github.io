@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080d12" />
+  <meta name="description" content="Shajesh Mogan’s portfolio of machine learning coursework, deep learning experiments and an AI-GNITION team project." />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="./app.js" defer></script>
+  <script src="./cinematic.js" defer></script>
+  <title>Shajesh Mogan | AI & Machine Learning Portfolio</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="scroll-progress" class="progress-bar" aria-hidden="true"></div>
+  <div class="scene-track" aria-label="Section shortcuts">
+    <a href="#top" data-scene="top" aria-label="Jump to introduction"><span></span><small>INTRO</small></a>
+    <a href="#work" data-scene="work" aria-label="Jump to selected work"><span></span><small>WORK</small></a>
+    <a href="#skills" data-scene="skills" aria-label="Jump to skills"><span></span><small>SKILLS</small></a>
+    <a href="#journey" data-scene="journey" aria-label="Jump to journey"><span></span><small>JOURNEY</small></a>
+    <a href="#contact" data-scene="contact" aria-label="Jump to contact"><span></span><small>CONTACT</small></a>
+  </div>
+
+  <header class="site-header" id="top">
+    <a href="#top" class="brand" aria-label="Shajesh Mogan, go to homepage">
+      <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>NEURO<span class="brand-light">SPACE</span></span>
+      <span class="brand-person">/ SM.</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about">ABOUT</a><a href="#work">SELECTED WORK</a><a href="#skills">TECHNICAL SKILLS</a><a href="#journey">JOURNEY</a>
+    </nav>
+    <div class="header-actions">
+      <button id="motion-toggle" class="motion-button" type="button" aria-pressed="false" aria-label="Turn off animations"><span class="motion-dot" aria-hidden="true"></span><span id="motion-label">MOTION ON</span></button>
+      <a class="outline-action" href="#contact">LET'S CONNECT <span class="action-arrow" aria-hidden="true">↗</span></a>
+    </div>
+    <button id="menu-toggle" class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span></span><span></span></button>
+  </header>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" hidden>
+    <a href="#about">ABOUT</a><a href="#work">SELECTED WORK</a><a href="#skills">TECHNICAL SKILLS</a><a href="#journey">JOURNEY</a><a href="#contact">CONNECT</a>
+    <button id="mobile-motion-toggle" type="button">TURN OFF MOTION</button>
+  </nav>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-background" aria-hidden="true"><div class="hero-grid"></div><div class="hero-gradient"></div></div>
+      <div class="hero-content container">
+        <div class="hero-copy">
+
+          <div class="eyebrow intro-item"><span class="status-led" aria-hidden="true"></span><span>AI &amp; MACHINE LEARNING PORTFOLIO</span></div>
+          <h1 id="hero-heading" class="hero-title intro-item">SHAJESH<br><em>MOGAN</em><span class="period">.</span></h1>
+          <p class="hero-description intro-item">I study Applied AI &amp; Analytics at Singapore Polytechnic. My projects cover image and text classification, and AI workflows with human approval.</p>
+          <div class="hero-buttons intro-item"><a href="#work" class="primary-button">EXPLORE MY WORK <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="#about" class="text-link">ABOUT ME <span aria-hidden="true">↓</span></a></div>
+          <div class="hero-meta intro-item"><span class="meta-line"></span><span>MODELS</span><span class="meta-separator">/</span><span>AGENTS</span><span class="meta-separator">/</span><span>SOFTWARE</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Interactive decorative neural globe">
+          <span class="hero-visual-hint" aria-hidden="true">DRAG TO EXPLORE</span>
+          <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
+          <canvas id="neural-canvas" width="640" height="640" aria-hidden="true"></canvas>
+          <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
+          <div class="orb-chip orb-chip-top" aria-hidden="true"><span class="tiny-square"></span> NEURAL NETWORK <span class="chip-state">INTERACTIVE</span></div>
+        </div>
+      </div>
+      <div class="hero-bottom container"><div class="hero-scroll"><span class="scroll-tick" aria-hidden="true"></span><span>SCROLL TO EXPLORE</span></div><div class="hero-count"><span>SHAJESH MOGAN</span> <span class="count-line"></span><span>PORTFOLIO</span></div></div>
+    </section>
+
+    <section class="interlude" aria-label="Approach to engineering">
+      <div class="container interlude-content">
+        <span class="micro-label">MY APPROACH</span>
+        <p class="interlude-statement">Compare models.<br><em>Explain decisions.</em></p>
+        <span class="interlude-aside">EXPLORE THE WORK BELOW <span aria-hidden="true">↓</span></span>
+      </div>
+    </section>
+
+    <section id="about" class="section-pad about-section" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 01 / 05 ]</span><span>ABOUT</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
+        <div class="about-layout">
+          <div class="about-statement reveal"><span class="micro-label">ABOUT</span><h2 id="about-heading">ABOUT <em>ME.</em></h2><div class="about-rule"><span>01</span><span>APPLIED AI &amp; ANALYTICS</span></div></div>
+          <div class="about-story reveal"><div class="story-mark" aria-hidden="true">“</div><p class="story-lead">I’m interested in how model choices affect what a system can do and how people use its output.</p><p>In my deep learning project, I compared recurrent architectures for sentiment classification. In RippleFix, our team explored how software could explain a room recommendation before someone approves it.</p><div class="story-signature"><span class="signature-line"></span> SHAJESH MOGAN</div></div>
+        </div>
+        <div class="principles-grid">
+          <article class="principle reveal"><span class="principle-index">01 / THINK</span><div class="principle-glyph glyph-observe" aria-hidden="true"><span></span><span></span><span></span></div><h3>Define constraints.</h3><p>Understand the problem before choosing the model.</p></article>
+          <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Explain recommendations.</h3><p>Show why a room fits the booking and why other options were rejected.</p></article>
+          <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Compare architectures.</h3><p>Evaluate different recurrent models on the same classification task.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work-section section-pad" aria-labelledby="work-heading">
+      <div class="container">
+        <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 02 / 05 ]</span><span>SELECTED WORK</span></div><span class="tiny-status">03 FEATURED PROJECTS</span></div>
+        <div class="section-heading-row reveal"><h2 id="work-heading">SELECTED <em>PROJECTS.</em></h2><p>Room recovery, handwriting and sentiment classification, image generation, and reinforcement learning.</p></div>
+        <div class="project-intro-bar"><span>EXPLORE THE CASE STUDIES</span><span>SELECTED WORK <b>↗</b></span></div>
+        <div class="project-grid">
+          <article class="project-card project-ripple reveal tilt-card">
+            <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 001</span></span><span class="project-type">AGENTIC WORKFLOWS</span></div>
+            <div class="project-illustration ripple-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">ROOM RECOVERY / WORKFLOW</div>
+              <div class="ripple-art-label">CONSTRAINTS → RECOMMENDATION → APPROVAL</div>
+              <svg class="flow-visual" viewBox="0 0 660 290" fill="none" role="presentation">
+                <defs><linearGradient id="flowline" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#89dcff" stop-opacity=".2"/><stop offset=".55" stop-color="#89dcff"/><stop offset="1" stop-color="#4c9fcb" stop-opacity=".6"/></linearGradient></defs>
+                <path d="M78 142H195L239 80H397L445 142H577" stroke="url(#flowline)" stroke-width="2"/><path d="M195 142L239 204H397L445 142" stroke="#73b6e0" stroke-opacity=".44" stroke-dasharray="5 8"/>
+                <circle class="flow-pulse" cx="78" cy="142" r="43" stroke="#89dcff" stroke-opacity=".46"/><circle cx="78" cy="142" r="30" fill="#89dcff" fill-opacity=".08" stroke="#9bdfff"/><path d="M78 125V147M78 157V161" stroke="#9bdfff" stroke-width="4" stroke-linecap="round"/>
+                <rect x="216" y="46" width="205" height="65" rx="3" fill="#0b2034" stroke="#467aa3"/><circle cx="241" cy="78" r="5" fill="#9bdfff"/><text x="258" y="83" fill="#d5efdb" font-size="12" letter-spacing="2">CONSTRAINT CHECK</text>
+                <rect x="216" y="172" width="205" height="65" rx="3" fill="#0b2034" stroke="#315a76"/><circle cx="241" cy="204" r="5" fill="#78b9e2"/><text x="258" y="209" fill="#9ebed4" font-size="12" letter-spacing="2">CANDIDATE PLAN</text>
+                <circle cx="582" cy="142" r="34" fill="#10253c" stroke="#83d5f8"/><path d="M568 142l9 9 19-21" stroke="#9de6ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="31" y="218" fill="#b8cedd" font-size="11" letter-spacing="2">DISRUPTION</text><text x="528" y="218" fill="#b8cedd" font-size="11" letter-spacing="2">APPROVAL</text>
+              </svg>
+              <div class="ripple-hud"><span>01 INPUT</span><span>02 REASON</span><span>03 APPROVE</span></div>
+            </div>
+            <div class="project-info"><div class="project-info-main"><span class="micro-label">AI-GNITION 2026 / TEAM PROJECT</span><h3>RippleFix<span class="name-accent">.</span></h3><p>Recovering from room and scheduling disruptions with constraint-aware plans, explainable choices and a human approval gate.</p><div class="project-chips"><span>AI Agents</span><span>Decision Logic</span><span>Google Calendar API</span></div></div><button class="project-open" type="button" data-open-dialog="case-ripplefix" aria-label="Explore RippleFix case study"><span aria-hidden="true">↗</span></button></div>
+            <button class="project-text-action" type="button" data-open-dialog="case-ripplefix">EXPLORE CASE STUDY <span aria-hidden="true">↗</span></button>
+          </article>
+          <article class="project-card project-deep reveal tilt-card">
+            <div class="project-upper"><span class="project-id">FEATURED PROJECT <span>/ 002</span></span><span class="project-type">DEEP LEARNING</span></div>
+            <div class="project-illustration deep-art" aria-hidden="true"><div class="project-beam"></div><div class="project-art-index">MODEL ARCHITECTURES</div>
+              <div class="deep-art-label">IMAGE AND LANGUAGE CLASSIFICATION</div>
+              <div class="vision-composition"><div class="vision-pixels"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="vision-connector"><span></span><span></span><span></span></div><div class="vision-network"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
+              <div class="deep-footer-art"><span>INPUT / FEATURES</span><span>MODEL / LEARN</span><span>OUTPUT / INFER</span></div>
+            </div>
+            <div class="project-info"><div class="project-info-main"><span class="micro-label">COMPUTER VISION / LANGUAGE MODELS</span><h3>Deep Learning<span class="name-accent">.</span></h3><p>Handwriting classification with a CNN and sentiment classification with SimpleRNN, LSTM and GRU.</p><div class="project-chips"><span>CNN</span><span>RNN / LSTM / GRU</span><span>Model Evaluation</span></div></div><button class="project-open" type="button" data-open-dialog="case-deep" aria-label="Explore Deep Learning case study"><span aria-hidden="true">↗</span></button></div>
+            <button class="project-text-action" type="button" data-open-dialog="case-deep">EXPLORE CASE STUDY <span aria-hidden="true">↗</span></button>
+          </article>
+          <article class="project-card project-ca2 reveal">
+            <div class="project-info">
+              <div class="project-info-main">
+                <span class="micro-label">SINGAPORE POLYTECHNIC / COURSEWORK</span>
+                <h3>Image Generation and Reinforcement Learning<span class="name-accent">.</span></h3>
+                <p>I compared a VAE and GAN for CIFAR-10 image generation, trained a DQN to control a pendulum under four gravity settings, and compared DQN with Double DQN across three paired seeds. Double DQN improved one seed but had lower mean reward in this experiment.</p>
+                <div class="project-chips"><span>TensorFlow / Keras</span><span>CIFAR-10</span><span>Gymnasium</span></div>
+              </div>
+            </div>
+            <a class="project-text-action" href="https://github.com/shajeshmogan/deep-learning-ca2" target="_blank" rel="noopener noreferrer">VIEW NOTEBOOKS ON GITHUB <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <div class="work-closer reveal"><div><span class="micro-label">ADDITIONAL WORK</span><p>More experiments and software projects are available through my GitHub profile.</p></div><a href="https://github.com/shajeshmogan" rel="noopener noreferrer" target="_blank" class="text-link">MORE ON GITHUB <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section id="skills" class="skills-section section-pad" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 03 / 05 ]</span><span>THE TECHNICAL SKILLS</span></div><span class="tiny-status">INTERACTIVE / SELECT A NODE</span></div>
+        <div class="section-heading-row reveal"><h2 id="skills-heading">SKILLS IN<br><em>CONTEXT.</em></h2><p>Select a discipline to see the concepts and tools I have used in coursework and projects.</p></div>
+        <div class="skills-workbench reveal">
+          <div class="skill-map" aria-label="Interactive map of technical interests">
+            <div class="skill-map-controls" role="group" aria-label="Rotate skill constellation"><button type="button" id="skill-rotate-left" aria-label="Rotate skill constellation left">↶</button><button type="button" id="skill-rotate-right" aria-label="Rotate skill constellation right">↷</button><button type="button" id="skill-reset-view">RESET VIEW</button></div>
+            <div class="map-grid" aria-hidden="true"></div>
+            <svg class="skill-connections" viewBox="0 0 600 560" preserveAspectRatio="none" aria-hidden="true"><path d="M300 280L120 120M300 280L480 110M300 280L500 305M300 280L440 462M300 280L140 455M300 280L82 302"/></svg>
+            <div class="map-orbit" aria-hidden="true"></div>
+            <div class="map-core" aria-hidden="true"><span class="core-star">✳</span><span>SM</span><small>BUILD / LEARN</small></div>
+            <button class="skill-node node-ml is-selected" type="button" data-skill="ml" aria-pressed="true"><span class="node-number">01</span><span>MACHINE<br>LEARNING</span></button>
+            <button class="skill-node node-dl" type="button" data-skill="dl" aria-pressed="false"><span class="node-number">02</span><span>DEEP<br>LEARNING</span></button>
+            <button class="skill-node node-agents" type="button" data-skill="agents" aria-pressed="false"><span class="node-number">03</span><span>AI<br>AGENTS</span></button>
+            <button class="skill-node node-software" type="button" data-skill="software" aria-pressed="false"><span class="node-number">04</span><span>SOFTWARE<br>ENGINEERING</span></button>
+            <button class="skill-node node-data" type="button" data-skill="data" aria-pressed="false"><span class="node-number">05</span><span>DATA<br>ENGINEERING</span></button>
+            <button class="skill-node node-analytics" type="button" data-skill="analytics" aria-pressed="false"><span class="node-number">06</span><span>DATA<br>ANALYTICS</span></button>
+            <span class="skill-axis skill-axis-l" aria-hidden="true">EXPLORE / RELATE / CREATE</span><span class="skill-axis skill-axis-r" aria-hidden="true">// KNOWLEDGE GRAPH</span>
+          </div>
+          <div class="skill-details" aria-live="polite"><div class="details-top"><span>SELECTED DOMAIN</span><span id="skill-count">01 / 06</span></div><div class="detail-signal" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><span id="skill-index" class="micro-label">NODE_01 / ACTIVE</span><h3 id="skill-title">Machine Learning</h3><p id="skill-description">Training models on structured data and evaluating their predictions.</p><div class="detail-divider"></div><span class="micro-label">// TOOLS &amp; CONCEPTS</span><p id="skill-tech" class="skill-tags-text">Python · Model training · Evaluation</p><span class="micro-label">// PROJECT CONNECTION</span><p id="skill-evidence" class="skill-evidence">Foundations across AI/ML coursework and applied projects.</p><div class="details-foot"><span class="details-led"></span> DOMAIN EXPLORED</div></div>
+        </div>
+        <p class="skills-note reveal">Skills shown here reflect coursework and hands-on project experience.</p>
+      </div>
+    </section>
+
+    <section id="journey" class="journey-section section-pad" aria-labelledby="journey-heading">
+      <div class="container"><div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 04 / 05 ]</span><span>THE JOURNEY</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
+        <div class="journey-layout"><div class="journey-intro reveal"><h2 id="journey-heading">LEARNING.<br><em>BUILDING.</em></h2><p>From foundational coursework to machine learning experiments and collaborative AI projects.</p><div class="journey-code"><span>STATUS</span><strong>BUILDING_AND_LEARNING</strong><span class="code-dot"></span></div></div>
+          <div class="timeline" id="journey-timeline">
+            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">EDUCATION / FOUNDATION</span><h3>Applied AI &amp; Analytics</h3><p>Exploring programming, data, machine learning and how to build software around intelligent ideas at Singapore Polytechnic.</p><span class="timeline-foot">SINGAPORE POLYTECHNIC</span></div>
+            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">PRACTICAL WORK / MODELS</span><h3>Handwriting and sentiment classification</h3><p>Working with neural networks for handwriting classification and language sentiment analysis, learning to compare architectures and evaluate outcomes.</p><span class="timeline-foot">DEEP LEARNING PROJECT</span></div>
+            <div class="timeline-item reveal"><div class="timeline-node"></div><span class="timeline-label">TEAM BUILD / 2026</span><h3>Room recovery with RippleFix</h3><p>Building RippleFix as part of AI-GNITION 2026, connecting room-recovery logic, decision transparency and approval before action.</p><span class="timeline-foot">AI-GNITION 2026 / RIPPLEFIX</span></div>
+            <div class="timeline-item timeline-future reveal"><div class="timeline-node"></div><span class="timeline-label">CURRENT FOCUS</span><h3>Machine learning and agent workflows</h3><p>Continuing to deepen my understanding of machine learning, agent workflows and production-minded software.</p><span class="timeline-foot">CURRENT FOCUS →</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section" aria-labelledby="contact-heading"><div class="contact-glow" aria-hidden="true"></div><div class="container contact-content reveal"><span class="micro-label">05 / 05 · CONTACT</span><h2 id="contact-heading">GET IN <em>TOUCH.</em></h2><p>I’m interested in AI/ML internships and technical collaborations.</p><div class="contact-actions"><a href="https://www.linkedin.com/in/shajeshmogan/" target="_blank" rel="noopener noreferrer" class="primary-button">CONNECT ON LINKEDIN <span class="circle-arrow" aria-hidden="true">↗</span></a><a href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer" class="contact-secondary">EXPLORE GITHUB <span aria-hidden="true">↗</span></a></div><div class="contact-bottom"><span>OPEN TO OPPORTUNITIES</span><span>NEUROSPACE / SHAJESH MOGAN</span></div></div></section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><div class="footer-brand">NEURO<span>SPACE</span></div><span>SHAJESH MOGAN / AI &amp; ML PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a><span>© <span id="year"></span></span></div></footer>
+
+  <dialog id="case-ripplefix" class="case-dialog" aria-labelledby="ripple-title">
+    <div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 001</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close RippleFix case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">AGENTIC WORKFLOWS / AI-GNITION 2026</span><h2 id="ripple-title">RippleFix<span class="period">.</span></h2><p class="case-lead">What happens when a booked room becomes unavailable? RippleFix explores how to recover a schedule while keeping constraints, explanations and human approval in the loop.</p><div class="case-columns"><div><h3>The challenge</h3><p>Room disruptions ripple across a timetable. A replacement must have enough capacity, avoid conflicts and respect unavailable rooms.</p></div><div><h3>Technical approach</h3><p>Constraint-aware room recommendations, scoring and rejection reasons, cascading changes and a supervised approval workflow connected to Google Calendar.</p></div></div><div class="case-walkthrough"><span class="micro-label">WORKFLOW EXPLAINER · ILLUSTRATIVE</span><div class="walk-steps" role="group" aria-label="RippleFix workflow steps"><button type="button" class="walk-step is-active" data-flow-step="0" aria-pressed="true">01 <span>INCIDENT</span></button><button type="button" class="walk-step" data-flow-step="1" aria-pressed="false">02 <span>ANALYSE</span></button><button type="button" class="walk-step" data-flow-step="2" aria-pressed="false">03 <span>EXPLAIN</span></button><button type="button" class="walk-step" data-flow-step="3" aria-pressed="false">04 <span>APPROVE</span></button></div><div class="walk-output"><span id="flow-label" class="micro-label">STEP 01 / INCIDENT</span><p id="flow-description">A room becomes unavailable. The system identifies affected bookings and begins recovery analysis.</p></div></div><div class="simulator" id="ripple-simulator">
+          <div class="simulator-head"><div><span class="micro-label">ROOM RECOVERY · SIMULATED</span><h3>Room recovery example</h3></div><span class="simulator-status" id="sim-status">STANDBY</span></div>
+          <p class="sim-helper">This example uses fictional bookings and room conditions. All actions stay in the browser and leave calendar events untouched.</p>
+          <div class="sim-room-grid" role="group" aria-label="Example room statuses">
+            <div class="sim-room is-broken" data-room="B401"><span>B401</span><small>INCIDENT</small><strong>UNAVAILABLE</strong></div>
+            <div class="sim-room" data-room="B402"><span>B402</span><small>CANDIDATE</small><strong>UNCHECKED</strong></div>
+            <div class="sim-room" data-room="B305"><span>B305</span><small>ALTERNATIVE</small><strong>UNCHECKED</strong></div>
+          </div>
+          <div class="sim-actions"><button type="button" id="sim-run">01 / ANALYSE OPTIONS →</button><button type="button" id="sim-approve" disabled>02 / APPROVE PROPOSAL →</button><button type="button" id="sim-reset">RESET</button></div>
+          <div class="sim-output" aria-live="polite"><span id="sim-output-label">AWAITING INPUT</span><p id="sim-output-text">Select “Analyse options” to see how a fictional disruption could be resolved.</p></div>
+        </div>
+        <a class="case-profile-link" href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer">SEE MY GITHUB ↗</a></div></div>
+  </dialog>
+  <dialog id="case-deep" class="case-dialog" aria-labelledby="deep-title"><div class="case-shell"><div class="case-header"><span>PROJECT BRIEF / 002</span><button type="button" class="dialog-close" data-close-dialog aria-label="Close Deep Learning case study">✕ CLOSE</button></div><div class="case-body"><span class="micro-label">COMPUTER VISION / NATURAL LANGUAGE</span><h2 id="deep-title">Deep Learning<span class="period">.</span></h2><p class="case-lead">Understanding how neural architectures learn different kinds of patterns — from handwritten characters to language sentiment.</p><div class="case-columns"><div><h3>Computer vision</h3><p>Training and evaluating a convolutional neural network for handwriting classification, focusing on visual features and generalisation.</p></div><div><h3>Language</h3><p>Exploring sentiment classification with recurrent architectures, including SimpleRNN, LSTM and GRU, and comparing their behaviour.</p></div></div><div class="model-panel"><span class="micro-label">LEARNING TASKS</span><div class="model-tabs" role="group" aria-label="Choose Deep Learning exploration"><button class="model-tab is-active" type="button" data-model-tab="vision" aria-pressed="true">VISION / CNN</button><button class="model-tab" type="button" data-model-tab="language" aria-pressed="false">LANGUAGE / RECURRENT</button></div><div class="model-stage" aria-live="polite"><div id="model-flow" class="model-flow"><span>IMAGE</span><b>→</b><span>CONVOLUTION</span><b>→</b><span>FEATURES</span><b>→</b><span>CLASS</span></div><p id="model-description">A CNN learns image features to support handwriting classification. This diagram shows the steps in the classification pipeline.</p></div></div><div class="architecture-explorer">
+        <div class="arch-intro"><div><span class="micro-label">MODEL ARCHITECTURES</span><h3>Architecture explorer</h3></div><span>ILLUSTRATIVE / NO LIVE INFERENCE</span></div>
+        <div class="arch-switches" role="group" aria-label="Choose neural network architecture">
+          <button type="button" class="arch-switch is-active" data-architecture="cnn" aria-pressed="true">CNN</button>
+          <button type="button" class="arch-switch" data-architecture="rnn" aria-pressed="false">SimpleRNN</button>
+          <button type="button" class="arch-switch" data-architecture="lstm" aria-pressed="false">LSTM</button>
+          <button type="button" class="arch-switch" data-architecture="gru" aria-pressed="false">GRU</button>
+        </div>
+        <div class="arch-stage"><svg viewBox="0 0 580 225" role="img" aria-label="Illustrative network diagram" id="arch-svg"></svg></div>
+        <div class="arch-caption"><strong id="arch-title">Convolutional neural network</strong><p id="arch-description" aria-live="polite">Convolutional layers help detect features in images such as handwritten characters.</p></div>
+        </div>
+        <div class="case-footnote">Architecture illustrations are conceptual. No live inference or training results are shown.</div><a class="case-profile-link" href="https://github.com/shajeshmogan" target="_blank" rel="noopener noreferrer">SEE MY GITHUB ↗</a></div></div></dialog>
+</body>
+</html>
