@@ -14,7 +14,6 @@
   const motionLabel = document.getElementById('motion-label');
   const menuButton = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  const scrollBar = document.getElementById('scroll-progress');
 
   function updateMotion() {
     root.classList.toggle('no-motion', !motionEnabled);
@@ -54,19 +53,6 @@
     }
   });
   window.addEventListener('resize', () => { if (window.innerWidth > 850) closeMenu(); }, { passive: true });
-
-  let scrollScheduled = false;
-  function syncScrollBar() {
-    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
-    const pct = Math.max(0, Math.min(100, (window.scrollY / maxScroll) * 100));
-    if (scrollBar) scrollBar.style.width = `${pct}%`;
-    scrollScheduled = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!scrollScheduled) { scrollScheduled = true; requestAnimationFrame(syncScrollBar); }
-  }, { passive: true });
-  window.addEventListener('resize', syncScrollBar, { passive: true });
-  syncScrollBar();
 
   const revealItems = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
@@ -262,12 +248,13 @@
   let cssWidth = 1, cssHeight = 1;
   let auraGradient = null, coreGradient = null;
   let time = 0, angleY = -.34, angleX = -.2;
+  let remainingTurn = 0;
   let pointerX = 0, pointerY = 0;
   let dragStart = null;
   let raf = 0;
   let lastTime = 0;
   let lastDraw = 0;
-  const minFrameInterval = 1000 / (mobileVisual ? 15 : 24);
+  const minFrameInterval = 1000 / (mobileVisual ? 30 : 60);
   let pageVisible = !document.hidden;
   let orbVisible = true;
 
@@ -306,7 +293,7 @@
     const y = point.y * cp - z * sp;
     const zz = point.y * sp + z * cp;
     const perspective = 2.85 / (2.85 - zz * .57);
-    return { x: cx + x * scale * perspective, y: cy + y * scale * perspective, z: zz, p: perspective };
+    return { x: cx + x * scale, y: cy + y * scale, z: zz, p: perspective };
   }
 
   function render() {
@@ -391,7 +378,11 @@
     const delta = Math.min(Math.max(now - (lastTime || now), 0), 80);
     lastTime = now;
     time += delta;
-    if (!dragStart) angleY += delta * .00010;
+    if (!dragStart) {
+      const turn = remainingTurn * (1 - Math.exp(-delta / 85));
+      angleY += turn + delta * .00010;
+      remainingTurn -= turn;
+    }
     render();
     raf = requestAnimationFrame(loop);
   }
@@ -400,6 +391,10 @@
     raf = 0;
     lastTime = 0;
     lastDraw = 0;
+    if (!motionEnabled) {
+      angleY += remainingTurn;
+      remainingTurn = 0;
+    }
     render();
     if (motionEnabled && pageVisible && orbVisible) raf = requestAnimationFrame(loop);
   }
@@ -427,7 +422,10 @@
     projectLink.textContent = title;
     projectCount.textContent = 'PROJECT ' + (projectIndex + 1) + ' OF ' + projectCards.length;
     projectAnnouncement.textContent = projectCount.textContent + ': ' + title;
-    if (turn) rotateGlobe(direction * -.7, 0);
+    if (turn) {
+      if (motionEnabled) remainingTurn -= direction * .7;
+      else rotateGlobe(direction * -.7, 0);
+    }
   }
   const previousProject = document.getElementById('globe-prev');
   const nextProject = document.getElementById('globe-next');

@@ -15,7 +15,6 @@ button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-off
 .container{width:min(100% - 112px,1460px);margin-inline:auto}
 .skip-link{position:fixed;z-index:1000;left:16px;top:12px;background:var(--accent);padding:12px 16px;color:#000;transform:translateY(-150%)}
 .skip-link:focus{transform:translateY(0)}
-.progress-bar{position:fixed;left:0;top:0;z-index:80;height:2px;width:0;background:var(--accent);pointer-events:none;box-shadow:0 0 13px var(--accent)}
 
 .site-header{height:92px;display:flex;align-items:center;justify-content:space-between;gap:28px;padding:0 56px;position:relative;z-index:60;border-bottom:1px solid rgba(179,211,212,.1);background:rgba(8,12,17,.78);}
 .brand{display:inline-flex;align-items:center;gap:12px;font-size:17px;font-weight:900;letter-spacing:-.07em;white-space:nowrap}.brand-light{font-weight:400;letter-spacing:-.045em}.brand sup,.footer-brand sup{font-size:8px;position:relative;top:-.5em;margin-left:2px;color:var(--accent)}
@@ -257,7 +256,6 @@ body::after{content:"";position:fixed;inset:0;background:radial-gradient(circle 
 .brand-symbol i{background:#84e2fb;box-shadow:0 0 16px rgba(89,209,255,.42)}.brand-person{color:#8aabba}
 .nav-links a,.header-actions{font-size:9px}.nav-links a:hover,.nav-links a:focus-visible{color:#b4eeff}
 .motion-dot,.status-led,.tiny-square{background:#79e2ff;box-shadow:0 0 14px rgba(96,210,255,.57)}
-.progress-bar{height:3px;background:linear-gradient(90deg,#4684ed,#8feaff,#baa7ff);box-shadow:0 0 14px #60c4ff}
 
 .scene-track{position:fixed;z-index:44;right:25px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;align-items:end;pointer-events:none}
 .scene-track a{position:relative;display:grid;place-items:center;width:28px;height:28px;pointer-events:auto;color:#89aac2;font-size:7px;letter-spacing:.15em;transition:color .22s}
@@ -457,16 +455,16 @@ body.no-motion .architecture-group { opacity:1;animation:none; }
 .globe-projects{position:relative;width:min(100%,370px);display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:4px 8px;padding:8px;border:1px solid var(--border);background:#091521;text-align:center}
 .globe-projects button{width:44px;height:44px;border:1px solid var(--border);background:#0d2134;color:var(--accent);font:inherit;font-size:18px;cursor:pointer}
 .globe-projects button:hover{background:#183652}
-.globe-selection{grid-column:2;grid-row:1;display:grid;gap:4px}
+.globe-selection{grid-column:2;grid-row:1;display:grid;align-content:center;gap:4px;min-height:66px}
 #globe-prev{grid-column:1;grid-row:1}
 #globe-next{grid-column:3;grid-row:1}
 #globe-project{color:#e9f7ff;font-size:13px;line-height:1.25;text-decoration:underline;text-underline-offset:3px}
 #globe-help{grid-column:1/-1;margin:0;color:#9db3c5;font-size:10px}
 #globe-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 
-.hero-visual{display:grid;justify-items:center;align-content:center;gap:8px;width:100%;height:auto;min-height:0;margin:0;transform:none}
+.hero-visual{display:grid;justify-items:center;align-content:center;gap:8px;width:100%;height:auto;min-width:0;min-height:0;margin:0;transform:none;grid-template-columns:minmax(0,1fr)}
 .globe-stage{position:relative;display:grid;place-items:center;isolation:isolate;width:min(100%,520px);aspect-ratio:1;min-width:0;min-height:0}
-.globe-stage #neural-canvas{position:absolute;inset:0}
+.globe-stage #neural-canvas{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0}
 @media(max-width:850px){
   .hero-content{height:auto}
   .hero-visual{align-self:center}
