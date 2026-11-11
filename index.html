@@ -57,9 +57,11 @@
           <div class="hero-meta intro-item"><span class="meta-line"></span><span>MODELS</span><span class="meta-separator">/</span><span>AGENTS</span><span class="meta-separator">/</span><span>SOFTWARE</span></div>
         </div>
         <div class="hero-visual">
-          <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
-          <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Project globe. Use Left or Right to browse projects."></canvas>
-          <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
+          <div class="globe-stage">
+            <div class="orb-halo" aria-hidden="true"></div><div class="orb-axis orb-axis-one" aria-hidden="true"></div><div class="orb-axis orb-axis-two" aria-hidden="true"></div>
+            <canvas id="neural-canvas" width="640" height="640" tabindex="0" aria-label="Project globe. Use Left or Right to browse projects, or Enter to show the next one."></canvas>
+            <div class="orbit-crosshair crosshair-top" aria-hidden="true">+</div><div class="orbit-crosshair crosshair-bottom" aria-hidden="true">+</div>
+          </div>
           <div class="globe-projects" role="group" aria-label="Browse projects">
             <button type="button" id="globe-prev" aria-label="Previous project" hidden>&larr;</button>
             <div class="globe-selection">
@@ -67,7 +69,7 @@
               <a id="globe-project" href="#project-ripplefix" aria-describedby="globe-count">RippleFix</a>
             </div>
             <button type="button" id="globe-next" aria-label="Next project" hidden>&rarr;</button>
-            <p id="globe-help" hidden>Drag left or right to browse.</p>
+            <p id="globe-help" hidden>Tap the globe or drag sideways to browse.</p>
             <span class="sr-only" id="globe-announcement" role="status"></span>
           </div>
         </div>
@@ -80,12 +82,12 @@
         <div class="section-top reveal"><div class="section-kicker"><span class="kicker-index">[ 01 / 05 ]</span><span>ABOUT</span></div><span class="small-corner-icon" aria-hidden="true">↗</span></div>
         <div class="about-layout">
           <div class="about-statement reveal"><span class="micro-label">ABOUT</span><h2 id="about-heading">ABOUT <em>ME.</em></h2><div class="about-rule"><span>01</span><span>APPLIED AI &amp; ANALYTICS</span></div></div>
-          <div class="about-story reveal"><div class="story-mark" aria-hidden="true">“</div><p class="story-lead">I’m interested in how model choices affect what a system can do and how people use its output.</p><p>In my deep learning project, I compared recurrent architectures for sentiment classification. In RippleFix, our team explored how software could explain a room recommendation before someone approves it.</p><div class="story-signature"><span class="signature-line"></span> SHAJESH MOGAN</div></div>
+          <div class="about-story reveal"><div class="story-mark" aria-hidden="true">“</div><p class="story-lead">What draws me to AI is the moment I can explain why a model got something wrong. That usually gives me a better idea of what to try next.</p><p>I enjoy taking an idea from a question to something I can run, test, and explain. I’m especially interested in what happens when a model meets data that looks different from what it learned on.</p><div class="story-signature"><span class="signature-line"></span> SHAJESH MOGAN</div></div>
         </div>
         <div class="principles-grid">
-          <article class="principle reveal"><span class="principle-index">01 / THINK</span><div class="principle-glyph glyph-observe" aria-hidden="true"><span></span><span></span><span></span></div><h3>Define constraints.</h3><p>Understand the problem before choosing the model.</p></article>
-          <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Explain recommendations.</h3><p>Show why a room fits the booking and why other options were rejected.</p></article>
-          <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Compare architectures.</h3><p>Evaluate different recurrent models on the same classification task.</p></article>
+          <article class="principle reveal"><span class="principle-index">01 / THINK</span><div class="principle-glyph glyph-observe" aria-hidden="true"><span></span><span></span><span></span></div><h3>Start with a question.</h3><p>I look at the data and decide what a useful answer would look like.</p></article>
+          <article class="principle reveal"><span class="principle-index">02 / BUILD</span><div class="principle-glyph glyph-connect" aria-hidden="true"><span></span><span></span><span></span><span></span></div><h3>Build a first version.</h3><p>I start with a simple baseline so I have something concrete to test.</p></article>
+          <article class="principle reveal"><span class="principle-index">03 / IMPROVE</span><div class="principle-glyph glyph-iterate" aria-hidden="true"><span></span><span></span></div><h3>Learn from mistakes.</h3><p>I look at the cases that fail, change one thing, and see whether it helps.</p></article>
         </div>
       </div>
     </section>

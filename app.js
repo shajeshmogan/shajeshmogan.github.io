@@ -449,14 +449,19 @@
   canvas.addEventListener('pointerleave', () => { pointerX = pointerY = 0; });
   canvas.addEventListener('pointerdown', (event) => {
     if (dragStart || event.button !== 0) return;
-    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: event.clientX };
+    dragStart = { id: event.pointerId, x: event.clientX, y: event.clientY, startX: event.clientX, startY: event.clientY };
     canvas.setPointerCapture(event.pointerId);
   });
   function endDrag(event) {
     if (dragStart?.id !== event.pointerId) return;
     const distance = event.clientX - dragStart.startX;
-    if (event.type === 'pointerup' && Math.abs(distance) >= 45) {
-      browseProject(distance < 0 ? 1 : -1, false);
+    const verticalDistance = Math.abs(event.clientY - dragStart.startY);
+    if (event.type === 'pointerup') {
+      if (Math.abs(distance) >= 32 && Math.abs(distance) > verticalDistance) {
+        browseProject(distance < 0 ? 1 : -1, false);
+      } else if (Math.abs(distance) < 6 && verticalDistance < 6) {
+        browseProject(1);
+      }
     }
     dragStart = null;
     pointerX = pointerY = 0;
@@ -473,6 +478,11 @@
   }
   const arrowRotation = { ArrowLeft: [-.15, 0], ArrowRight: [.15, 0], ArrowUp: [0, -.12], ArrowDown: [0, .12] };
   canvas.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      browseProject(1);
+      return;
+    }
     if (!Object.hasOwn(arrowRotation, event.key)) return;
     event.preventDefault();
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
